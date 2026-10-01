@@ -1,0 +1,211 @@
+/* ============================================
+   NEUMORPHIC DESIGN PASS
+   Soft lavender / cool-white surfaces inspired by the reference UI.
+   Raised and pressed surfaces use paired light + cool-dark shadows.
+   ============================================ */
+
+:root {
+  --cream: #E9ECF5;
+  --paper: #E9ECF5;
+  --white: #EEF1F8;
+  --navy: #66738B;
+  --navy-ink: #59667E;
+  --muted: #8995AA;
+  --orange: #8F7CF6;
+  --orange-hover: #A292FF;
+  --orange-ink: #7765DC;
+  --line: rgba(255,255,255,.72);
+  --line-strong: rgba(255,255,255,.88);
+  --tint: rgba(118,132,160,.08);
+  --tint-strong: rgba(118,132,160,.14);
+  --glass: rgba(233,236,245,.82);
+  --plate: #E9ECF5;
+  --panel-dark: #E0E4EF;
+
+  --neo-light: rgba(255,255,255,.92);
+  --neo-dark: rgba(177,186,207,.58);
+  --neo-raised:
+    10px 10px 22px var(--neo-dark),
+    -10px -10px 22px var(--neo-light);
+  --neo-raised-small:
+    6px 6px 14px rgba(177,186,207,.52),
+    -6px -6px 14px rgba(255,255,255,.88);
+  --neo-pressed:
+    inset 5px 5px 10px rgba(177,186,207,.48),
+    inset -5px -5px 10px rgba(255,255,255,.82);
+  --shadow-soft: var(--neo-raised);
+  --shadow-card: 18px 18px 42px rgba(177,186,207,.48), -18px -18px 42px rgba(255,255,255,.78);
+  --shadow-btn: var(--neo-raised-small);
+}
+
+body {
+  background:
+    radial-gradient(circle at 12% 8%, rgba(162,146,255,.22), transparent 30%),
+    radial-gradient(circle at 88% 88%, rgba(141,160,205,.16), transparent 34%),
+    var(--cream);
+}
+
+/* Keep the existing animated contour background subtle so the interface,
+   rather than the shader, carries the visual identity. */
+.hero-canvas {
+  opacity: .22;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(160,145,255,.24), transparent 35%),
+    var(--cream);
+}
+
+/* Main raised sheet. */
+.home__glass,
+.pgrid__glass,
+.sgrid__glass,
+.tgrid__glass,
+.agrid__glass,
+.cgrid__glass {
+  background: rgba(233,236,245,.76) !important;
+  border: 1px solid rgba(255,255,255,.72) !important;
+  box-shadow: var(--neo-raised) !important;
+}
+
+/* Bento cards become soft raised controls instead of hard bordered cards. */
+.bento__card {
+  background: #E9ECF5 !important;
+  border: 0 !important;
+  box-shadow: var(--neo-raised-small) !important;
+}
+.bento__card:hover {
+  border: 0 !important;
+  transform: translateY(-2px);
+  box-shadow:
+    9px 9px 20px rgba(177,186,207,.55),
+    -9px -9px 20px rgba(255,255,255,.9) !important;
+}
+
+/* Circular / pill controls from the reference. */
+.rail__social,
+.rail__theme,
+.nav__theme,
+.pgrid__video-link,
+.bento__logo,
+.bento__chip,
+.home__cta,
+.ppanel__ext,
+.ppanel__tab,
+.rail__link.active {
+  border: 0 !important;
+  background: #E9ECF5 !important;
+  box-shadow: var(--neo-raised-small) !important;
+}
+
+.rail__social:hover,
+.rail__theme:hover,
+.nav__theme:hover {
+  box-shadow: var(--neo-pressed) !important;
+}
+
+.rail__link.active {
+  box-shadow: var(--neo-pressed) !important;
+}
+
+/* Inputs / search-like controls read as pressed into the surface. */
+input,
+textarea,
+select,
+.cgrid__input,
+.cgrid__textarea {
+  background: #E9ECF5 !important;
+  border: 0 !important;
+  box-shadow: var(--neo-pressed) !important;
+  color: var(--navy) !important;
+}
+
+/* Accent controls use the lavender signal rather than orange. */
+.home__cta {
+  color: var(--navy) !important;
+}
+.home__cta svg,
+.bento__chip svg,
+.pgrid__eyebrow,
+.home__tools-eyebrow,
+.pgrid__video-link {
+  color: var(--orange) !important;
+}
+
+.bento__icon {
+  background: #E9ECF5 !important;
+  color: var(--orange) !important;
+  box-shadow: var(--neo-raised-small) !important;
+}
+
+.bento__shot,
+.bento__photo {
+  background: #E9ECF5 !important;
+  border: 0 !important;
+  box-shadow: var(--neo-raised-small) !important;
+}
+
+/* Toolbar-like strips and navigation use the same soft sheet language. */
+.home .tools-marquee,
+.rail__nav {
+  border-color: transparent !important;
+  box-shadow: var(--neo-pressed);
+  background: rgba(233,236,245,.58);
+}
+
+/* Video cards get a soft frame around the media. */
+.pgrid__video {
+  border-radius: 18px;
+  box-shadow: var(--neo-pressed);
+}
+
+/* Subtle pressed state for clickable project cards. */
+.pgrid__video-card[role='link']:active {
+  transform: translateY(1px);
+  box-shadow: var(--neo-pressed) !important;
+}
+
+/* Keep dark theme intentionally dark, but give it the same neumorphic logic. */
+[data-theme='dark'] {
+  --cream: #202634;
+  --paper: #252C3C;
+  --white: #2A3244;
+  --navy: #DCE2EF;
+  --muted: #929DB1;
+  --orange: #9B8AFF;
+  --orange-hover: #AB9DFF;
+  --orange-ink: #A99AFF;
+  --line: rgba(255,255,255,.06);
+  --line-strong: rgba(255,255,255,.10);
+  --neo-light: rgba(58,68,88,.78);
+  --neo-dark: rgba(12,16,26,.72);
+  --neo-raised:
+    10px 10px 22px var(--neo-dark),
+    -10px -10px 22px var(--neo-light);
+  --neo-raised-small:
+    6px 6px 14px var(--neo-dark),
+    -6px -6px 14px var(--neo-light);
+  --neo-pressed:
+    inset 5px 5px 10px var(--neo-dark),
+    inset -5px -5px 10px var(--neo-light);
+}
+
+[data-theme='dark'] .home__glass,
+[data-theme='dark'] .pgrid__glass,
+[data-theme='dark'] .sgrid__glass,
+[data-theme='dark'] .tgrid__glass,
+[data-theme='dark'] .agrid__glass,
+[data-theme='dark'] .cgrid__glass {
+  background: rgba(37,44,60,.82) !important;
+  box-shadow: var(--neo-raised) !important;
+}
+
+@media (max-width: 639px) {
+  .home__glass,
+  .pgrid__glass,
+  .sgrid__glass,
+  .tgrid__glass,
+  .agrid__glass,
+  .cgrid__glass {
+    box-shadow: 7px 7px 18px rgba(177,186,207,.48),
+      -7px -7px 18px rgba(255,255,255,.78) !important;
+  }
+}
