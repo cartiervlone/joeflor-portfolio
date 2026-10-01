@@ -4,6 +4,12 @@ import { profile } from '@/data/profile'
 import ToolsMarquee from './ToolsMarquee'
 import HomeBento from './HomeBento'
 import { HomeProfile, HomeStats, HomeExplore } from './HomeMobile'
+import ProjectsGrid from './ProjectsGrid'
+import ServicesGrid from './ServicesGrid'
+import ShowcaseGrid from './ShowcaseGrid'
+import TestimonialsGrid from './TestimonialsGrid'
+import AboutGrid from './AboutGrid'
+import ContactGrid from './ContactGrid'
 import { useScrollReveal } from '@/hooks/useScrollReveal'
 import { useIsPhone } from '@/hooks/useMediaQuery'
 
@@ -78,6 +84,15 @@ export default function Home() {
           </div>
         </div>
       )}
+
+      <div className="home__sections" aria-label="Portfolio sections">
+        <section id="projects" className="home__section"><ProjectsGrid /></section>
+        <section id="services" className="home__section"><ServicesGrid /></section>
+        <section id="editing-style" className="home__section"><ShowcaseGrid /></section>
+        <section id="experience" className="home__section"><TestimonialsGrid /></section>
+        <section id="about" className="home__section"><AboutGrid /></section>
+        <section id="contact" className="home__section"><ContactGrid /></section>
+      </div>
     </section>
   )
 }
