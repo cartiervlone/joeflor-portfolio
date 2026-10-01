@@ -1,4 +1,3 @@
-import type { CSSProperties } from 'react'
 import { MapPin } from '@/components/slab'
 import { profile } from '@/data/profile'
 
@@ -65,7 +64,7 @@ export default function AboutGrid() {
               <MapPin size={16} weight="fill" aria-hidden="true" />
               <span className="agrid__cell-copy">
                 <span className="agrid__cell-title">{profile.location}</span>
-                <span className="agrid__cell-meta">Available for freelance editing work</span>
+                <span className="agrid__cell-meta">Open to freelance editing projects</span>
               </span>
             </span>
           </div>
