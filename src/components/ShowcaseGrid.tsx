@@ -1,47 +1,43 @@
-import Flagship from '@/components/Flagship'
+import type { CSSProperties } from 'react'
+import { CheckCircle, FilmSlate, Waveform, Lightning, ArrowsClockwise } from '@/components/slab'
 
-/**
- * ShowcaseGrid - the /showcase view on one glass sheet.
- *
- * A page head with a badge card on the right, then the Flagship build: the
- * five-tab product mock, the copy, the CTA, and the testimonial marquee that
- * runs under it. Same head and glass as Projects and Services, so the shell
- * reads as one system. Styles live in src/styles/showcase.css (.ktools).
- */
+const POINTS = [
+  ['01', 'Rhythm', 'Cuts, pauses, music, and movement work together instead of fighting each other.', Waveform],
+  ['02', 'Pacing', 'Fast when the moment needs energy. Slower when the story needs space.', ArrowsClockwise],
+  ['03', 'Visual flow', 'Transitions and effects support the edit rather than becoming the whole edit.', FilmSlate],
+  ['04', 'Sound', 'Dialogue, music, and sound design are treated as part of the storytelling.', Lightning],
+]
+
 export default function ShowcaseGrid() {
   return (
     <section className="pgrid ktools" aria-labelledby="showcase-title">
       <header className="pgrid__head ktools__head">
         <div className="ktools__head-copy">
-          <span className="pgrid__eyebrow">Showcase</span>
-          <h1 className="pgrid__title" id="showcase-title">
-            Your flagship product, and the people using it.
-          </h1>
-          <p className="pgrid__lede">
-            PLACEHOLDER - tell me what to put here: one line on what this product is and why a visitor should look at it.
-          </p>
-        </div>
-
-        {/* Badge slot. Fixed 320x72 box so it sits on the baseline of the
-            lede. Swap the image and text for a real badge, award or launch
-            listing, and point the link at it. */}
-        <div className="ktools__vote">
-          <p className="ktools__vote-label">
-            Featured on
-            <span aria-hidden="true" className="ktools__vote-dot" />
-            <span className="ktools__vote-ask">Placeholder</span>
-          </p>
-          <a className="ktools__vote-frame ktools__vote-card" href="#">
-            <img src="/placeholders/badge.svg" alt="" width="48" height="48" />
-            <span className="ktools__vote-text">
-              PLACEHOLDER - a badge, award or launch link
-            </span>
-          </a>
+          <span className="pgrid__eyebrow">Editing Style</span>
+          <h1 className="pgrid__title" id="showcase-title">Smooth, clean, cinematic — without losing the story.</h1>
+          <p className="pgrid__lede">My approach is less about stacking effects and more about making every cut feel intentional.</p>
         </div>
       </header>
 
       <div className="home__glass ktools__glass">
-        <Flagship eyebrow="Flagship build" />
+        <div className="sgrid__method" style={{ height: '100%' }}>
+          <div className="sgrid__method-copy">
+            <span className="sgrid__method-eyebrow">What guides the edit</span>
+            <h2 className="sgrid__method-title">Every project gets<br /><span>the style it actually needs.</span></h2>
+            <p className="sgrid__method-sub">A gaming montage should hit differently from a podcast conversation. A narrative film needs room to breathe. I adapt the edit to the content.</p>
+          </div>
+          <ol className="sgrid__stages" role="list">
+            {POINTS.map(([index, title, body, Icon], i) => (
+              <li key={index} className="sgrid__stage" style={{ '--i': i } as CSSProperties}>
+                <span className="sgrid__stage-ghost">{index}</span>
+                <span className="sgrid__stage-icon"><Icon size={22} weight="duotone" /></span>
+                <h3 className="sgrid__stage-label">{title}.</h3>
+                <p className="sgrid__stage-body">{body}</p>
+                <span className="sgrid__stage-chips"><span className="sgrid__stage-chip"><CheckCircle size={13} /> Intentional</span></span>
+              </li>
+            ))}
+          </ol>
+        </div>
       </div>
     </section>
   )
