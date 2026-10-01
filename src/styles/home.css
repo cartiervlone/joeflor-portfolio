@@ -285,3 +285,38 @@
      headline has to start below it or the first line reads through the navy. */
   .home { padding-top: 104px; }
 }
+
+
+/* ---------- Long-form home page ---------- */
+.home {
+  height: auto;
+  min-height: 100%;
+}
+
+@media (min-width: 1100px) {
+  .home {
+    display: flex;
+    height: auto;
+    min-height: 100%;
+  }
+}
+
+.home__sections {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(40px, 7vw, 110px);
+  margin-top: clamp(20px, 4vw, 64px);
+}
+
+.home__section {
+  scroll-margin-top: 32px;
+}
+
+.home__section > .pgrid {
+  min-height: 0;
+}
+
+.home__section .pgrid {
+  padding-left: 0;
+  padding-right: 0;
+}
