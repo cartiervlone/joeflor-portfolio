@@ -62,12 +62,9 @@ export default function ProjectsGrid() {
                 rel="noopener noreferrer"
                 aria-label={`Watch ${p.title} on YouTube`}
               />
-              <div className="bento__head">
-                <span className="bento__logos">
-                  <span className="bento__logo">{p.index}</span>
-                </span>
-                <span className="bento__title">{p.title}</span>
-                <span className="bento__desc">{p.description}</span>
+
+              <div className="pgrid__card-top">
+                <span className="bento__logo">{p.index}</span>
                 <a
                   className="pgrid__video-link"
                   href={`https://www.youtube.com/watch?v=${p.videoId}`}
@@ -79,6 +76,7 @@ export default function ProjectsGrid() {
                   <ArrowUpRight size={15} weight="bold" aria-hidden="true" />
                 </a>
               </div>
+
               <div className="bento__media bento__reel pgrid__video">
                 <img
                   src={`https://i.ytimg.com/vi/${p.videoId}/hqdefault.jpg`}
@@ -87,7 +85,12 @@ export default function ProjectsGrid() {
                 />
                 <span className="pgrid__play" aria-hidden="true">▶</span>
               </div>
-              <span className="pgrid__eyebrow">YouTube · Gaming Montage</span>
+
+              <div className="pgrid__card-copy">
+                <span className="pgrid__eyebrow">YouTube · Gaming Montage</span>
+                <span className="bento__title">{p.title}</span>
+                <span className="bento__desc">{p.description}</span>
+              </div>
             </article>
           ))}
         </div>
