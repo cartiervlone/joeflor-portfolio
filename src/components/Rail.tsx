@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { NavLink, useLocation, useNavigate } from 'react-router-dom'
+import { useEffect, useState, type MouseEvent } from 'react'
+import { NavLink, useLocation } from 'react-router-dom'
 import { SealCheck } from '@/components/slab'
 import ThemeGlyph from './ThemeGlyph'
 import {
@@ -109,7 +109,7 @@ export default function Rail() {
 
               const isHome = to === '/'
 
-              const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+              const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
                 if (!sectionId || location.pathname !== '/') return
                 e.preventDefault()
                 document.getElementById(sectionId)?.scrollIntoView({
