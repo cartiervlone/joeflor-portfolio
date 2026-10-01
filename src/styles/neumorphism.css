@@ -209,3 +209,103 @@ select,
       -7px -7px 18px rgba(255,255,255,.78) !important;
   }
 }
+
+
+/* ---------- Dark-mode neumorphism refinements ---------- */
+[data-theme='dark'] body {
+  background:
+    radial-gradient(circle at 12% 8%, rgba(155,138,255,.16), transparent 30%),
+    radial-gradient(circle at 88% 88%, rgba(80,96,130,.14), transparent 34%),
+    var(--cream);
+}
+
+[data-theme='dark'] .hero-canvas {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(155,138,255,.14), transparent 35%),
+    var(--cream);
+}
+
+[data-theme='dark'] .bento__card,
+[data-theme='dark'] .rail__social,
+[data-theme='dark'] .rail__theme,
+[data-theme='dark'] .nav__theme,
+[data-theme='dark'] .pgrid__video-link,
+[data-theme='dark'] .bento__logo,
+[data-theme='dark'] .bento__chip,
+[data-theme='dark'] .home__cta,
+[data-theme='dark'] .ppanel__ext,
+[data-theme='dark'] .ppanel__tab,
+[data-theme='dark'] .rail__link.active,
+[data-theme='dark'] .bento__icon,
+[data-theme='dark'] .bento__shot,
+[data-theme='dark'] .bento__photo,
+[data-theme='dark'] input,
+[data-theme='dark'] textarea,
+[data-theme='dark'] select,
+[data-theme='dark'] .cgrid__input,
+[data-theme='dark'] .cgrid__textarea {
+  background: var(--paper) !important;
+  color: var(--navy) !important;
+}
+
+[data-theme='dark'] .bento__card:hover {
+  box-shadow:
+    9px 9px 20px var(--neo-dark),
+    -9px -9px 20px var(--neo-light) !important;
+}
+
+[data-theme='dark'] .home .tools-marquee,
+[data-theme='dark'] .rail__nav {
+  background: rgba(37,44,60,.58);
+  box-shadow: var(--neo-pressed);
+}
+
+[data-theme='dark'] .bento__logo {
+  box-shadow: var(--neo-raised-small) !important;
+}
+
+[data-theme='dark'] .pgrid__video {
+  background: var(--paper);
+  box-shadow: var(--neo-pressed);
+}
+
+[data-theme='dark'] .pgrid__video-card .bento__title {
+  color: var(--navy);
+}
+
+[data-theme='dark'] .pgrid__video-card .bento__desc {
+  color: var(--muted);
+}
+
+[data-theme='dark'] .pgrid__video-card .pgrid__eyebrow {
+  color: var(--orange);
+}
+
+[data-theme='dark'] .ppanel--frame,
+[data-theme='dark'] .ppanel--window {
+  background: var(--cream);
+  border-color: var(--line-strong);
+}
+
+[data-theme='dark'] .ppanel__tabs,
+[data-theme='dark'] .ppanel__bar {
+  background: var(--paper);
+}
+
+[data-theme='dark'] .ppanel__stage {
+  background: var(--white);
+}
+
+/* Re-apply dark shadows after the mobile light-theme media query above. */
+@media (max-width: 639px) {
+  [data-theme='dark'] .home__glass,
+  [data-theme='dark'] .pgrid__glass,
+  [data-theme='dark'] .sgrid__glass,
+  [data-theme='dark'] .tgrid__glass,
+  [data-theme='dark'] .agrid__glass,
+  [data-theme='dark'] .cgrid__glass {
+    box-shadow:
+      7px 7px 18px var(--neo-dark),
+      -7px -7px 18px var(--neo-light) !important;
+  }
+}
