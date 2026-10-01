@@ -10,28 +10,83 @@ const CAPABILITIES = [
 
 export default function AboutGrid() {
   return (
-    <section className="pgrid longcard" aria-labelledby="about-title">
-      <div className="home__glass longcard__shell longcard--about">
-        <header className="longcard__head">
-          <span className="longcard__eyebrow">About</span>
-          <h1 className="longcard__title" id="about-title">Hi, I’m {profile.firstName}.</h1>
-          <p className="longcard__lede">Video Editor, Post-Production Specialist, Content Creator, and Podcast Video Editor.</p>
-        </header>
+    <section className="pgrid agrid" aria-labelledby="about-title">
+      <header className="pgrid__head">
+        <span className="pgrid__eyebrow">About</span>
+        <h1 className="pgrid__title" id="about-title">Hi, I’m {profile.firstName}.</h1>
+        <p className="pgrid__lede">Video Editor, Post-Production Specialist, Content Creator, and Podcast Video Editor.</p>
+      </header>
 
-        <div className="longcard__visual">
-          <div className="longcard__portrait">
-            <img src={profile.hero.portraitSrc} alt={profile.hero.portraitAlt} loading="eager" decoding="async" />
+      <div className="home__glass agrid__glass">
+        <div className="agrid__copy">
+          <p className="agrid__lead">
+            I build edits that feel <strong>smooth, intentional, and cinematic.</strong>
+            <span> The style changes with the story.</span>
+          </p>
+
+          <p className="agrid__note">
+            My editing started with gaming montages and grew into freelance work across podcasts, YouTube, social content, and film. I work primarily in DaVinci Resolve and Adobe Premiere Pro, while developing my After Effects skills.
+          </p>
+
+          <ul className="agrid__caps" role="list">
+            {CAPABILITIES.map(([index, title]) => (
+              <li key={index} className="agrid__cap">
+                <span className="agrid__cap-marks"><span className="agrid__mark"><span>{index}</span></span></span>
+                <span className="agrid__cap-title">{title}</span>
+                <span className="agrid__cap-index" aria-hidden="true">{index}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div className="agrid__bar">
+            <span className="agrid__cell">
+              <span className="agrid__cell-copy">
+                <span className="agrid__cell-title">DaVinci Resolve</span>
+                <span className="agrid__cell-meta">Primary editing workflow</span>
+              </span>
+            </span>
+            <span className="agrid__cell">
+              <span className="agrid__cell-copy">
+                <span className="agrid__cell-title">Adobe Premiere Pro</span>
+                <span className="agrid__cell-meta">Editing & multicam</span>
+              </span>
+            </span>
+            <span className="agrid__cell agrid__cell--wide">
+              <span className="agrid__cell-copy">
+                <span className="agrid__cell-title">Adobe After Effects</span>
+                <span className="agrid__cell-meta">Currently learning & expanding post-production skills</span>
+              </span>
+            </span>
           </div>
-          <div className="longcard__aboutcopy">
-            <p>I build edits that feel <strong>smooth, intentional, and cinematic.</strong><span> The style changes with the story.</span></p>
-            <p>My editing started with gaming montages and grew into freelance work across podcasts, YouTube, social content, and film. I work primarily in DaVinci Resolve and Adobe Premiere Pro, while developing my After Effects skills.</p>
-            <p>Gaming Montage Editing · Podcast & Interview Editing · YouTube & Social Content · Film & Cinematic Editing</p>
+
+          <div className="agrid__bar">
+            <span className="agrid__cell agrid__cell--wide">
+              <MapPin size={16} weight="fill" aria-hidden="true" />
+              <span className="agrid__cell-copy">
+                <span className="agrid__cell-title">{profile.location}</span>
+                <span className="agrid__cell-meta">Open to freelance editing projects</span>
+              </span>
+            </span>
+          </div>
+
+          <div className="agrid__bar">
+            <span className="agrid__cell">
+              <span className="agrid__cell-copy">
+                <span className="agrid__cell-title">Cebu Eastern College</span>
+                <span className="agrid__cell-meta">B.S. Information Technology · 2022–2026</span>
+              </span>
+            </span>
+            <span className="agrid__cell agrid__cell--wide">
+              <span className="agrid__cell-copy">
+                <span className="agrid__cell-title">Vestahomes Commercial Inc.</span>
+                <span className="agrid__cell-meta">Technical & production support internship · 2025</span>
+              </span>
+            </span>
           </div>
         </div>
 
-        <div className="longcard__bottom">
-          <span className="longcard__bottom-title">DaVinci Resolve · Adobe Premiere Pro · Adobe After Effects</span>
-          <span className="longcard__bottom-copy">{profile.location} · Open to freelance editing projects</span>
+        <div className="agrid__portrait">
+          <img src={profile.hero.portraitSrc} alt={profile.hero.portraitAlt} loading="eager" decoding="async" width={400} height={400} />
         </div>
       </div>
     </section>
