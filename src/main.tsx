@@ -46,6 +46,7 @@ import './styles/apple.css'
 // Mobile motion + component pass on top of it (phone shell only).
 import './styles/mobile-pass.css'
 // Last: the perf tiers only ever turn things OFF, so they must win.
+import './styles/neumorphism.css'
 import './styles/perf.css'
 
 // Re-apply this tab's performance verdict before the first paint, so a
