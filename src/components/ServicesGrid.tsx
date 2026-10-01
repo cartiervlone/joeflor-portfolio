@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import { CheckCircle, FilmSlate, Microphone, YoutubeLogo, GameController, MonitorPlay } from '@/components/slab'
 
 const SERVICES = [
@@ -30,7 +31,7 @@ export default function ServicesGrid() {
               ['02', 'Build', 'Cut for clarity and rhythm, then shape the visual and audio flow.'],
               ['03', 'Polish', 'Clean the details, refine the sound and visuals, and prepare the final export.'],
             ].map(([index, label, body], i) => (
-              <li key={index} className="sgrid__stage" style={{ '--i': i } as React.CSSProperties}>
+              <li key={index} className="sgrid__stage" style={{ '--i': i } as CSSProperties}>
                 <span className="sgrid__stage-ghost" aria-hidden="true">{index}</span>
                 <span className="sgrid__stage-icon" aria-hidden="true"><CheckCircle size={22} weight="duotone" /></span>
                 <h3 className="sgrid__stage-label">{label}.</h3>
