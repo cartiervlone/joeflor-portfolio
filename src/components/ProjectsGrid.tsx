@@ -80,13 +80,12 @@ export default function ProjectsGrid() {
                 </a>
               </div>
               <div className="bento__media bento__reel pgrid__video">
-                <iframe
-                  src={`https://www.youtube-nocookie.com/embed/${p.videoId}`}
-                  title={p.title}
+                <img
+                  src={`https://i.ytimg.com/vi/${p.videoId}/hqdefault.jpg`}
+                  alt={`${p.title} YouTube thumbnail`}
                   loading="lazy"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
                 />
+                <span className="pgrid__play" aria-hidden="true">▶</span>
               </div>
               <span className="pgrid__eyebrow">YouTube · Gaming Montage</span>
             </article>
