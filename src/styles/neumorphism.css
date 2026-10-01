@@ -103,7 +103,7 @@ body {
 }
 
 .rail__link.active {
-  box-shadow: var(--neo-pressed) !important;
+  box-shadow: none !important;
 }
 
 /* Inputs / search-like controls read as pressed into the surface. */
