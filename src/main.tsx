@@ -47,6 +47,7 @@ import './styles/apple.css'
 import './styles/mobile-pass.css'
 // Last: the perf tiers only ever turn things OFF, so they must win.
 import './styles/neumorphism.css'
+import './styles/home-longcards.css'
 import './styles/perf.css'
 
 // Re-apply this tab's performance verdict before the first paint, so a
