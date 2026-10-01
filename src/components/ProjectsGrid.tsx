@@ -11,28 +11,28 @@ type Project = {
 const PROJECTS: Project[] = [
   {
     index: '01',
-    title: 'Gaming Montage 01',
+    title: '[METRO] 777 GLOOKS [GTA IN DESC]',
     type: 'Personal Work',
     description: 'A personal gaming montage focused on music sync, timing, motion, effects, and cinematic pacing.',
     videoId: 'OT6A2AwJSNQ',
   },
   {
     index: '02',
-    title: 'Gaming Montage 02',
+    title: 'metro rp // wutitdo! ft. palmsu',
     type: 'Personal Work',
     description: 'Gaming montage work built around rhythm, gameplay highlights, transitions, and visual energy.',
     videoId: 'hmMa4F01CUI',
   },
   {
     index: '03',
-    title: 'Gaming Montage 03',
+    title: 'IMRP // gta in desc',
     type: 'Personal Work',
     description: 'A gameplay edit showcasing fast cuts, timing, effects, and music-driven visual flow.',
     videoId: 'BlgqEU2CyBM',
   },
   {
     index: '04',
-    title: 'Gaming Montage 04',
+    title: '[MGCRP] Two Headed Goat ft. Rocco',
     type: 'Personal Work',
     description: 'Another personal montage demonstrating pacing, sound sync, visual emphasis, and cinematic editing.',
     videoId: '5KH3tDAdIso',
@@ -51,7 +51,19 @@ export default function ProjectsGrid() {
       <div className="home__glass pgrid__glass">
         <div className="bento bento--projects">
           {PROJECTS.map((p) => (
-            <article key={p.videoId} className="bento__card pgrid__video-card">
+            <article
+              key={p.videoId}
+              className="bento__card pgrid__video-card"
+              role="link"
+              tabIndex={0}
+              onClick={() => window.open(`https://www.youtube.com/watch?v=${p.videoId}`, '_blank', 'noopener,noreferrer')}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault()
+                  window.open(`https://www.youtube.com/watch?v=${p.videoId}`, '_blank', 'noopener,noreferrer')
+                }
+              }}
+            >
               <div className="bento__head">
                 <span className="bento__logos">
                   <span className="bento__logo">{p.index}</span>
@@ -64,6 +76,7 @@ export default function ProjectsGrid() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`Watch ${p.title} on YouTube`}
+                  onClick={(e) => e.stopPropagation()}
                 >
                   <ArrowUpRight size={15} weight="bold" aria-hidden="true" />
                 </a>
