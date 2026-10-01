@@ -1,6 +1,6 @@
-import { CheckCircle, FilmSlate, GameController, Microphone, YoutubeLogo } from '@/components/slab'
+import { CheckCircle, FilmSlate, GameController, Microphone, YoutubeLogo, type Icon } from '@/components/slab'
 
-const AREAS = [
+const AREAS: Array<[string, string, string, Icon]> = [
   ['01', 'Gaming', 'Personal montage work with a focus on music sync, timing, effects, and high-energy pacing.', GameController],
   ['02', 'Podcasts', 'Current podcast video editing work covering long-form host and guest episodes, sync, multicam, dialogue cleanup, and split-cam presentation.', Microphone],
   ['03', 'YouTube', 'Story-driven edits that balance pacing, clarity, sound, and visual variety.', YoutubeLogo],
