@@ -1,7 +1,7 @@
 import { MapPin } from '@/components/slab'
 import { profile } from '@/data/profile'
 
-const CAPABILITIES = [
+const CAPABILITIES: Array<[string, string]> = [
   ['01', 'Gaming Montage Editing'],
   ['02', 'Podcast & Interview Editing'],
   ['03', 'YouTube & Social Content'],
