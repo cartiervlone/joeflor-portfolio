@@ -1,0 +1,453 @@
+/* Long homepage feature cards */
+.home__sections {
+  gap: clamp(56px, 8vw, 120px);
+}
+
+.home__section {
+  scroll-margin-top: 40px;
+}
+
+.home__section > .pgrid {
+  display: block;
+  min-height: 0;
+  padding: 0;
+}
+
+.longcard {
+  width: 100%;
+}
+
+.longcard__shell {
+  position: relative;
+  overflow: hidden;
+  min-height: clamp(620px, 72vw, 820px);
+  border-radius: 34px;
+  padding: clamp(22px, 3vw, 42px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.longcard__head {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  max-width: 920px;
+  margin: 0 auto clamp(22px, 3vw, 34px);
+}
+
+.longcard__eyebrow {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--orange);
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.longcard__title {
+  margin: 0;
+  color: var(--navy);
+  font-size: clamp(2rem, 4.2vw, 4.1rem);
+  line-height: .98;
+  letter-spacing: -.055em;
+}
+
+.longcard__lede {
+  max-width: 760px;
+  margin: 18px auto 0;
+  color: var(--muted);
+  font-size: clamp(.92rem, 1.25vw, 1.08rem);
+  line-height: 1.65;
+}
+
+.longcard__visual {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  min-height: 300px;
+  border-radius: 28px;
+  overflow: hidden;
+  background: var(--paper);
+  box-shadow: var(--neo-pressed);
+}
+
+.longcard__bottom {
+  position: relative;
+  z-index: 3;
+  margin-top: clamp(22px, 3vw, 34px);
+  padding: clamp(20px, 2.5vw, 30px);
+  border-radius: 24px;
+  background: rgba(233,236,245,.62);
+  box-shadow: var(--neo-raised-small);
+}
+
+.longcard__bottom-title {
+  display: block;
+  color: var(--navy);
+  font-size: clamp(1.05rem, 1.7vw, 1.45rem);
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.longcard__bottom-copy {
+  display: block;
+  margin-top: 8px;
+  max-width: 900px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+[data-theme='dark'] .longcard__bottom {
+  background: rgba(37,44,60,.72);
+}
+
+/* Selected Work */
+.longcard--work .longcard__visual {
+  min-height: clamp(310px, 42vw, 520px);
+}
+
+.workslider {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.workslider__track {
+  display: flex;
+  width: 400%;
+  height: 100%;
+  animation: work-slider 20s infinite ease-in-out;
+}
+
+.workslider__slide {
+  position: relative;
+  width: 25%;
+  height: 100%;
+  flex: 0 0 25%;
+  overflow: hidden;
+}
+
+.workslider__slide a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.workslider__slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .7s ease;
+}
+
+.workslider__slide:hover img {
+  transform: scale(1.025);
+}
+
+.workslider__caption {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  padding: 9px 13px;
+  border-radius: 12px;
+  color: var(--navy);
+  background: rgba(233,236,245,.86);
+  box-shadow: var(--neo-raised-small);
+  font-size: .78rem;
+  font-weight: 800;
+}
+
+@keyframes work-slider {
+  0%, 20% { transform: translateX(0); }
+  25%, 45% { transform: translateX(-25%); }
+  50%, 70% { transform: translateX(-50%); }
+  75%, 95% { transform: translateX(-75%); }
+  100% { transform: translateX(0); }
+}
+
+/* Services */
+.servicevisual {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: clamp(10px, 1.4vw, 18px);
+  padding: clamp(16px, 2vw, 28px);
+  align-items: stretch;
+}
+
+.servicevisual__tile {
+  min-height: 260px;
+  padding: 22px 16px;
+  border-radius: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  background: var(--paper);
+  box-shadow: var(--neo-raised-small);
+}
+
+.servicevisual__icon {
+  width: clamp(74px, 8vw, 110px);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border-radius: 26px;
+  color: var(--orange);
+  background: var(--paper);
+  box-shadow: var(--neo-pressed);
+}
+
+.servicevisual__name {
+  color: var(--navy);
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.longcard--services .longcard__visual {
+  min-height: 330px;
+}
+
+/* Text-only long cards still use the same visual hierarchy. */
+.longcard__textvisual {
+  height: 100%;
+  min-height: 300px;
+  display: grid;
+  place-items: center;
+  padding: clamp(28px, 5vw, 70px);
+  text-align: center;
+}
+
+.longcard__textvisual-inner {
+  max-width: 850px;
+}
+
+.longcard__textvisual-kicker {
+  color: var(--orange);
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.longcard__textvisual-title {
+  margin: 14px 0 0;
+  color: var(--navy);
+  font-size: clamp(2rem, 5vw, 4.5rem);
+  line-height: .98;
+  letter-spacing: -.055em;
+}
+
+.longcard__textvisual-body {
+  margin: 18px auto 0;
+  color: var(--muted);
+  max-width: 680px;
+  line-height: 1.7;
+}
+
+/* About */
+.longcard--about .longcard__visual {
+  display: grid;
+  grid-template-columns: minmax(220px, .7fr) 1.3fr;
+  gap: clamp(20px, 4vw, 60px);
+  align-items: center;
+  padding: clamp(20px, 4vw, 48px);
+}
+
+.longcard__portrait {
+  width: min(100%, 360px);
+  aspect-ratio: 1;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 30px;
+  box-shadow: var(--neo-raised);
+}
+
+.longcard__portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.longcard__aboutcopy {
+  max-width: 700px;
+}
+
+.longcard__aboutcopy p {
+  margin: 0 0 16px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.longcard__aboutcopy strong {
+  color: var(--navy);
+}
+
+/* Experience / Editing Style */
+.longcard__list {
+  width: min(100%, 980px);
+  margin: auto;
+  padding: clamp(18px, 3vw, 34px);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.longcard__item {
+  min-height: 150px;
+  padding: 22px;
+  border-radius: 20px;
+  background: var(--paper);
+  box-shadow: var(--neo-raised-small);
+}
+
+.longcard__item-index {
+  display: block;
+  color: var(--orange);
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+
+.longcard__item-title {
+  display: block;
+  margin-top: 10px;
+  color: var(--navy);
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.longcard__item-body {
+  display: block;
+  margin-top: 8px;
+  color: var(--muted);
+  line-height: 1.55;
+  font-size: .9rem;
+}
+
+/* Contact */
+.longcard--contact .longcard__visual {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: clamp(28px, 6vw, 80px);
+}
+
+.longcard__contactbody {
+  max-width: 760px;
+}
+
+.longcard__contactbody h2 {
+  margin: 0;
+  color: var(--navy);
+  font-size: clamp(2rem, 4.5vw, 4rem);
+  letter-spacing: -.05em;
+}
+
+.longcard__contactbody p {
+  margin: 18px auto 24px;
+  max-width: 650px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.longcard__contactlinks {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.longcard__contactlinks a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  color: var(--navy);
+  background: var(--paper);
+  box-shadow: var(--neo-raised-small);
+  text-decoration: none;
+  font-weight: 800;
+}
+
+.longcard__contactlinks a:hover {
+  box-shadow: var(--neo-pressed);
+}
+
+@media (max-width: 900px) {
+  .servicevisual {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .longcard__aboutcopy {
+    max-width: none;
+  }
+
+  .longcard--about .longcard__visual {
+    grid-template-columns: 1fr;
+  }
+
+  .longcard__portrait {
+    width: min(70%, 300px);
+  }
+}
+
+@media (max-width: 639px) {
+  .longcard__shell {
+    min-height: 0;
+    border-radius: 26px;
+    padding: 16px;
+  }
+
+  .longcard__head {
+    margin-bottom: 18px;
+  }
+
+  .longcard__visual {
+    min-height: 300px;
+    border-radius: 22px;
+  }
+
+  .longcard__bottom {
+    padding: 18px;
+    border-radius: 20px;
+  }
+
+  .servicevisual {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 12px;
+  }
+
+  .servicevisual__tile {
+    min-height: 180px;
+    padding: 15px 10px;
+  }
+
+  .servicevisual__icon {
+    width: 62px;
+    border-radius: 19px;
+  }
+
+  .longcard__list {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+
+  .longcard--about .longcard__visual {
+    padding: 18px;
+  }
+
+  .longcard__portrait {
+    width: min(80%, 270px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .workslider__track {
+    animation: none;
+  }
+}
