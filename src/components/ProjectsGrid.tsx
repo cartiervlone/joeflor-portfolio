@@ -54,16 +54,14 @@ export default function ProjectsGrid() {
             <article
               key={p.videoId}
               className="bento__card pgrid__video-card"
-              role="link"
-              tabIndex={0}
-              onClick={() => window.open(`https://www.youtube.com/watch?v=${p.videoId}`, '_blank', 'noopener,noreferrer')}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault()
-                  window.open(`https://www.youtube.com/watch?v=${p.videoId}`, '_blank', 'noopener,noreferrer')
-                }
-              }}
             >
+              <a
+                className="pgrid__card-hit"
+                href={`https://www.youtube.com/watch?v=${p.videoId}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Watch ${p.title} on YouTube`}
+              />
               <div className="bento__head">
                 <span className="bento__logos">
                   <span className="bento__logo">{p.index}</span>
