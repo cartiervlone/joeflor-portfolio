@@ -102,8 +102,16 @@ body {
   box-shadow: var(--neo-pressed) !important;
 }
 
+.rail__link {
+  background: #E9ECF5 !important;
+  box-shadow: var(--neo-raised-small) !important;
+}
+.rail__link:hover {
+  box-shadow: var(--neo-pressed) !important;
+}
 .rail__link.active {
-  box-shadow: none !important;
+  background: #E9ECF5 !important;
+  box-shadow: var(--neo-pressed) !important;
 }
 
 /* Inputs / search-like controls read as pressed into the surface. */
