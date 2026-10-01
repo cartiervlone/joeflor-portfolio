@@ -47,11 +47,10 @@ export function HomeStats() {
 }
 
 const TILES = [
-  { n: '01', label: 'Projects', to: '/projects', title: 'PLACEHOLDER - projects headline', desc: 'Tell me what to put here.', img: '/placeholders/project-1.jpg' },
-  { n: '02', label: 'Services', to: '/services', title: 'PLACEHOLDER - services headline', desc: 'Tell me what to put here.', Icon: Stack },
-  { n: '03', label: 'Showcase', to: '/showcase', title: 'PLACEHOLDER - your flagship', desc: 'Tell me what to put here.', Icon: Coffee, accent: true },
-  { n: '04', label: 'Testimonials', to: '/testimonials', title: 'PLACEHOLDER - testimonials headline', desc: 'Tell me what to put here.', img: '/placeholders/testimonial-1.jpg' },
-  { n: '05', label: 'About', to: '/about', title: `Hi, I'm ${profile.firstName}.`, desc: 'PLACEHOLDER - one line about you.', img: profile.avatarSrc },
+  { n: '01', label: 'Projects', to: '/projects', title: 'Selected editing work', desc: 'Gaming, podcasts, YouTube, social, and cinematic.' },
+  { n: '02', label: 'Services', to: '/services', title: 'What I edit', desc: 'Long-form, short-form, montage, and narrative.' , Icon: Stack },
+  { n: '03', label: 'About', to: '/about', title: "Hi, I'm " + profile.firstName + '.', desc: 'The path from gaming montages to freelance editing.', img: profile.avatarSrc },
+  { n: '04', label: 'Contact', to: '/contact', title: 'Start a project', desc: 'Send your brief and let’s talk.', Icon: Coffee },
 ] as const
 
 export function HomeExplore() {
