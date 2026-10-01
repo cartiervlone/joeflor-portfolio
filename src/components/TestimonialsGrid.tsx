@@ -2,9 +2,9 @@ import { CheckCircle, FilmSlate, GameController, Microphone, YoutubeLogo } from 
 
 const AREAS = [
   ['01', 'Gaming', 'Personal montage work with a focus on music sync, timing, effects, and high-energy pacing.', GameController],
-  ['02', 'Podcasts', 'Long-form host and guest editing, including sync, multicam, dialogue cleanup, and split-cam presentation.', Microphone],
+  ['02', 'Podcasts', 'Current podcast video editing work covering long-form host and guest episodes, sync, multicam, dialogue cleanup, and split-cam presentation.', Microphone],
   ['03', 'YouTube', 'Story-driven edits that balance pacing, clarity, sound, and visual variety.', YoutubeLogo],
-  ['04', 'Film', 'Narrative and cinematic editing developed through school film projects and continued freelance work.', FilmSlate],
+  ['04', 'Film', 'Narrative and cinematic editing developed through school film projects, plus earlier technical and audio-visual production support.', FilmSlate],
 ]
 
 export default function TestimonialsGrid() {
