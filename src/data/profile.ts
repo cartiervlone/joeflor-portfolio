@@ -49,5 +49,6 @@ export const profile: Profile = {
   },
   socials: [
     { label: 'Instagram profile', href: 'https://www.instagram.com/plordinary', iconPath: '/icons/instagram.svg' },
+    { label: 'YouTube channel', href: 'https://www.youtube.com/@amyhooligan', iconPath: '/icons/youtube.svg' },
   ],
 }
