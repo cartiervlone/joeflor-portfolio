@@ -309,3 +309,19 @@ select,
       -7px -7px 18px var(--neo-light) !important;
   }
 }
+
+
+/* ---------- Hidden rail: one surface, not nested boxes ---------- */
+@media (min-width: 1100px) {
+  .rail__nav {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    padding-top: 0 !important;
+    margin-top: clamp(18px, 2.5vh, 26px);
+  }
+
+  .rail__nav ul {
+    gap: 7px;
+  }
+}
