@@ -325,3 +325,29 @@ select,
     gap: 7px;
   }
 }
+
+
+/* ---------- Project cards: softer neumorphism ---------- */
+.pgrid__video-card {
+  box-shadow:
+    7px 7px 16px rgba(177,186,207,.42),
+    -5px -5px 12px rgba(255,255,255,.38) !important;
+}
+
+.pgrid__video-card:hover {
+  box-shadow:
+    8px 8px 18px rgba(177,186,207,.46),
+    -5px -5px 12px rgba(255,255,255,.42) !important;
+}
+
+[data-theme='dark'] .pgrid__video-card {
+  box-shadow:
+    7px 7px 16px var(--neo-dark),
+    -5px -5px 12px rgba(58,68,88,.34) !important;
+}
+
+[data-theme='dark'] .pgrid__video-card:hover {
+  box-shadow:
+    8px 8px 18px var(--neo-dark),
+    -5px -5px 12px rgba(58,68,88,.40) !important;
+}
