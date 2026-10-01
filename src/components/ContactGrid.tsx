@@ -37,11 +37,16 @@ export default function ContactGrid() {
         <div className="cgrid__panel">
           <div className="cgrid__done">
             <span className="cgrid__done-mark" aria-hidden="true"><InstagramLogo size={30} weight="fill" /></span>
-            <h2 className="cgrid__done-title">Message me on Instagram.</h2>
-            <p className="cgrid__done-body">I’m using Instagram as the primary contact point for now. Send a DM to <strong>{profile.handle}</strong> with your project details and references.</p>
-            <a className="cgrid__again" href="https://www.instagram.com/plordinary" target="_blank" rel="noopener noreferrer">
-              Open Instagram <ArrowUpRight size={15} weight="bold" />
-            </a>
+            <h2 className="cgrid__done-title">Let’s talk about your edit.</h2>
+            <p className="cgrid__done-body">For project inquiries, send me a message on Instagram or email me directly at <strong>{profile.email}</strong>.</p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+              <a className="cgrid__again" href="https://www.instagram.com/plordinary" target="_blank" rel="noopener noreferrer">
+                Open Instagram <ArrowUpRight size={15} weight="bold" />
+              </a>
+              <a className="cgrid__again" href={`mailto:${profile.email}`}>
+                Send Email <ArrowUpRight size={15} weight="bold" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
