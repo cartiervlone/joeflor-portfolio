@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { SealCheck } from '@/components/slab'
 import ThemeGlyph from './ThemeGlyph'
 import {
@@ -37,7 +37,7 @@ export const RAIL_LINKS = [
 
 export default function Rail() {
   const [theme, setThemeState] = useState<Theme>('light')
-
+  const location = useLocation()
   // The pre-paint script owns the real value; read it once mounted so the
   // button shows the icon for the action, not for the current state.
   useEffect(() => setThemeState(getTheme()), [])
@@ -97,14 +97,42 @@ export default function Rail() {
 
         <nav className="rail__nav" aria-label="Sections">
           <ul>
-            {RAIL_LINKS.map(({ label, to, Icon }) => (
-              <li key={to}>
-                <NavLink to={to} end={to === '/'} className="rail__link">
-                  <Icon size={21} />
-                  {label}
-                </NavLink>
-              </li>
-            ))}
+            {RAIL_LINKS.map(({ label, to, Icon }) => {
+              const sectionId =
+                to === '/projects' ? 'projects' :
+                to === '/services' ? 'services' :
+                to === '/showcase' ? 'editing-style' :
+                to === '/testimonials' ? 'experience' :
+                to === '/about' ? 'about' :
+                to === '/contact' ? 'contact' :
+                null
+
+              const isHome = to === '/'
+
+              const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+                if (!sectionId || location.pathname !== '/') return
+                e.preventDefault()
+                document.getElementById(sectionId)?.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'start',
+                })
+                window.history.replaceState(null, '', `/#${sectionId}`)
+              }
+
+              return (
+                <li key={to}>
+                  <NavLink
+                    to={sectionId ? `/#${sectionId}` : to}
+                    end={isHome}
+                    className="rail__link"
+                    onClick={handleClick}
+                  >
+                    <Icon size={21} />
+                    {label === 'Showcase' ? 'Editing Style' : label === 'Testimonials' ? 'Experience' : label === 'FAQs / Contact' ? 'Contact' : label}
+                  </NavLink>
+                </li>
+              )
+            })}
           </ul>
         </nav>
 
