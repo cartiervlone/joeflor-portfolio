@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react'
-import { CheckCircle, FilmSlate, Waveform, Lightning, ArrowsClockwise } from '@/components/slab'
+import { CheckCircle, FilmSlate, Waveform, Lightning, ArrowsClockwise, type Icon } from '@/components/slab'
 
-const POINTS = [
+const POINTS: Array<[string, string, string, Icon]> = [
   ['01', 'Rhythm', 'Cuts, pauses, music, and movement work together instead of fighting each other.', Waveform],
   ['02', 'Pacing', 'Fast when the moment needs energy. Slower when the story needs space.', ArrowsClockwise],
   ['03', 'Visual flow', 'Transitions and effects support the edit rather than becoming the whole edit.', FilmSlate],
