@@ -68,6 +68,21 @@ export default function AboutGrid() {
               </span>
             </span>
           </div>
+
+          <div className="agrid__bar">
+            <span className="agrid__cell">
+              <span className="agrid__cell-copy">
+                <span className="agrid__cell-title">Cebu Eastern College</span>
+                <span className="agrid__cell-meta">B.S. Information Technology · 2022–2026</span>
+              </span>
+            </span>
+            <span className="agrid__cell agrid__cell--wide">
+              <span className="agrid__cell-copy">
+                <span className="agrid__cell-title">Vestahomes Commercial Inc.</span>
+                <span className="agrid__cell-meta">Technical & production support internship · 2025</span>
+              </span>
+            </span>
+          </div>
         </div>
 
         <div className="agrid__portrait">
