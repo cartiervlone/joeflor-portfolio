@@ -437,10 +437,12 @@
 .bento--home {
   gap: clamp(16px, 1.6vw, 24px);
   align-items: stretch;
+  grid-template-rows: none;
 }
 
 .bento__card--home {
   min-height: 520px;
+  height: auto;
   padding: clamp(20px, 2vw, 30px);
   justify-content: flex-start;
   text-align: center;
@@ -450,6 +452,18 @@
 .bento__card--home:hover {
   transform: translateY(-3px);
   border-color: var(--line-strong);
+}
+
+.bento__home-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin: 0 auto clamp(10px, 1vw, 14px);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--orange) 10%, var(--white));
+  color: var(--orange);
+  box-shadow: var(--neo-raised-small);
 }
 
 .bento__home-title {
