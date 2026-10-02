@@ -8,7 +8,7 @@ type Project = {
   videoId: string
 }
 
-const PROJECTS: Project[] = [
+const YOUTUBE_PROJECTS: Project[] = [
   {
     index: '01',
     title: '[METRO] 777 GLOOKS [GTA IN DESC]',
@@ -39,62 +39,99 @@ const PROJECTS: Project[] = [
   },
 ]
 
+function ProjectCard({ project, vertical = false }: { project: Project; vertical?: boolean }) {
+  const p = project
+
+  return (
+    <article
+      className={`bento__card pgrid__video-card${vertical ? ' pgrid__video-card--vertical' : ''}`}
+    >
+      <a
+        className="pgrid__card-hit"
+        href={`https://www.youtube.com/watch?v=${p.videoId}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Watch ${p.title} on YouTube`}
+      />
+
+      <div className="pgrid__card-top">
+        <span className="bento__logo">{p.index}</span>
+        <a
+          className="pgrid__video-link"
+          href={`https://www.youtube.com/watch?v=${p.videoId}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Watch ${p.title} on YouTube`}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <ArrowUpRight size={15} weight="bold" aria-hidden="true" />
+        </a>
+      </div>
+
+      <div className="bento__media bento__reel pgrid__video">
+        <img
+          src={`https://i.ytimg.com/vi/${p.videoId}/hqdefault.jpg`}
+          alt={`${p.title} YouTube thumbnail`}
+          loading="lazy"
+        />
+        <span className="pgrid__play" aria-hidden="true">▶</span>
+      </div>
+
+      <div className="pgrid__card-copy">
+        <span className="pgrid__eyebrow">{p.type} · YouTube · Gaming Montage</span>
+        <span className="bento__title">{p.title}</span>
+        <span className="bento__desc">{p.description}</span>
+      </div>
+    </article>
+  )
+}
+
 export default function ProjectsGrid() {
   return (
     <section className="pgrid" aria-labelledby="projects-title">
       <header className="pgrid__head">
         <span className="pgrid__eyebrow">Selected Work</span>
         <h1 className="pgrid__title" id="projects-title">Actual edits. Real videos. My style.</h1>
-        <p className="pgrid__lede">A selection of my gaming montage work. These are personal edits published on my YouTube channel, built around rhythm, music, timing, effects, and cinematic flow.</p>
+        <p className="pgrid__lede">
+          A selection of my editing work across gaming, YouTube, short-form, podcasts, and social content.
+        </p>
       </header>
 
-      <div className="home__glass pgrid__glass">
-        <div className="bento bento--projects">
-          {PROJECTS.map((p) => (
-            <article
-              key={p.videoId}
-              className="bento__card pgrid__video-card"
-            >
-              <a
-                className="pgrid__card-hit"
-                href={`https://www.youtube.com/watch?v=${p.videoId}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Watch ${p.title} on YouTube`}
-              />
-
-              <div className="pgrid__card-top">
-                <span className="bento__logo">{p.index}</span>
-                <a
-                  className="pgrid__video-link"
-                  href={`https://www.youtube.com/watch?v=${p.videoId}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Watch ${p.title} on YouTube`}
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <ArrowUpRight size={15} weight="bold" aria-hidden="true" />
-                </a>
-              </div>
-
-              <div className="bento__media bento__reel pgrid__video">
-                <img
-                  src={`https://i.ytimg.com/vi/${p.videoId}/hqdefault.jpg`}
-                  alt={`${p.title} YouTube thumbnail`}
-                  loading="lazy"
-                />
-                <span className="pgrid__play" aria-hidden="true">▶</span>
-              </div>
-
-              <div className="pgrid__card-copy">
-                <span className="pgrid__eyebrow">YouTube · Gaming Montage</span>
-                <span className="bento__title">{p.title}</span>
-                <span className="bento__desc">{p.description}</span>
-              </div>
-            </article>
-          ))}
+      <section className="pgrid__section" aria-labelledby="youtube-work-title">
+        <div className="pgrid__section-head">
+          <div>
+            <span className="pgrid__section-kicker">01 · YouTube</span>
+            <h2 className="pgrid__section-title" id="youtube-work-title">Gaming Montages</h2>
+          </div>
+          <p className="pgrid__section-note">Long-form gaming edits built around music, timing, effects, and cinematic pacing.</p>
         </div>
-      </div>
+
+        <div className="home__glass pgrid__glass">
+          <div className="bento bento--projects">
+            {YOUTUBE_PROJECTS.map((project) => (
+              <ProjectCard key={project.videoId} project={project} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="pgrid__section pgrid__section--social" aria-labelledby="social-work-title">
+        <div className="pgrid__section-head">
+          <div>
+            <span className="pgrid__section-kicker">02 · Social</span>
+            <h2 className="pgrid__section-title" id="social-work-title">Short-Form & Podcast Edits</h2>
+          </div>
+          <p className="pgrid__section-note">Reels, podcast clips, Shorts, and social-first edits in a vertical 9:16 format.</p>
+        </div>
+
+        <div className="home__glass pgrid__glass pgrid__glass--social">
+          <div className="pgrid__social-empty">
+            <span className="pgrid__social-empty-label">Social / Short-Form</span>
+            <h3>Reels, podcast clips &amp; Shorts</h3>
+            <p>This section is ready for your vertical work. Once you add the clips, they’ll be presented here in a dedicated 9:16 layout.</p>
+          </div>
+        </div>
+      </section>
     </section>
   )
 }
