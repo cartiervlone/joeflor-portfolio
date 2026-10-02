@@ -9,12 +9,11 @@ type HomeCard = {
   Icon: Icon
 }
 
-const PLACEHOLDER_SLIDES = [
+const YOUTUBE_SLIDES = [
   'https://i.ytimg.com/vi/OT6A2AwJSNQ/hqdefault.jpg',
   'https://i.ytimg.com/vi/hmMa4F01CUI/hqdefault.jpg',
   'https://i.ytimg.com/vi/BlgqEU2CyBM/hqdefault.jpg',
   'https://i.ytimg.com/vi/5KH3tDAdIso/hqdefault.jpg',
-  'https://i.ytimg.com/vi/OT6A2AwJSNQ/maxresdefault.jpg',
 ]
 
 const CARDS: HomeCard[] = [
@@ -22,28 +21,28 @@ const CARDS: HomeCard[] = [
     to: '/projects',
     title: 'Selected Work',
     desc: 'Gaming, podcasts, YouTube, social, and cinematic edits.',
-    slides: PLACEHOLDER_SLIDES,
+    slides: YOUTUBE_SLIDES,
     Icon: FolderOpen,
   },
   {
     to: '/services',
     title: 'Services',
     desc: 'Editing built around the format, audience, and story.',
-    slides: PLACEHOLDER_SLIDES,
+    slides: YOUTUBE_SLIDES,
     Icon: Stack,
   },
   {
     to: '/about',
     title: 'About Me',
     desc: 'How gaming montages grew into freelance post-production work.',
-    slides: PLACEHOLDER_SLIDES,
+    slides: YOUTUBE_SLIDES,
     Icon: User,
   },
   {
     to: '/contact',
     title: 'Let’s Work',
     desc: 'Message @plordinary with your next project.',
-    slides: PLACEHOLDER_SLIDES,
+    slides: YOUTUBE_SLIDES,
     Icon: ChatCircleDots,
   },
 ]
