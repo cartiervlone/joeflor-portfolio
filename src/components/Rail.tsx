@@ -95,7 +95,7 @@ export default function Rail() {
           </button>
         </div>
 
-        <nav className="rail__nav" aria-label="Sections">
+        <div className="rail__menu">        <nav className="rail__nav" aria-label="Sections">
           <ul>
             {RAIL_LINKS.map(({ label, to, Icon }) => {
               const sectionId =
@@ -136,11 +136,14 @@ export default function Rail() {
           </ul>
         </nav>
 
+        </nav>
+
         <p className="rail__copy">
           &copy; {new Date().getFullYear()}
           <br />
           {profile.name}. All rights reserved.
         </p>
+        </div>
       </div>
     </aside>
   )
