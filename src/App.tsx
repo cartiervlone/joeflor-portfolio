@@ -31,7 +31,10 @@ export default function App() {
   useLenis()
 
   const { pathname } = useLocation()
-  const FIXED_ROUTES = ['/projects', '/testimonials', '/about', '/contact']
+  // All portfolio views scroll naturally. Long sections and card grids must
+  // be allowed to grow with their content instead of being forced into one
+  // viewport-height box and overflowing their glass panels.
+  const FIXED_ROUTES: string[] = []
   const isFixed = FIXED_ROUTES.includes(pathname)
   // Below the shell breakpoint the rail is gone: a bottom tab bar navigates,
   // the QuickMenu (theme + accessibility) floats top-right on every page but
