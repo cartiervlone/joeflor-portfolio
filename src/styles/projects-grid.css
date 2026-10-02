@@ -13,9 +13,8 @@
 }
 @media (min-width: 1100px) {
   .pgrid {
-    height: 100%;
-    display: grid;
-    grid-template-rows: auto 1fr;
+    height: auto;
+    display: flex;
     min-height: 0;
   }
 }
