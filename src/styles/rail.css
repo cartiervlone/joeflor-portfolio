@@ -16,6 +16,9 @@
     padding: clamp(28px, 4vh, 52px) 30px 28px;
     overflow-y: auto;
     scrollbar-width: none;
+    background: var(--paper);
+    box-shadow: var(--neo-raised);
+    border-right: 1px solid var(--line-strong);
     transform: translateX(calc(-100% + 26px));
     transition: transform 420ms var(--ease-spring);
   }
