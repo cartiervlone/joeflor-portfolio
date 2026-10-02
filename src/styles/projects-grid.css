@@ -782,3 +782,33 @@
     min-height: 300px;
   }
 }
+
+
+/* Separate media formats: vertical reels vs landscape teasers. */
+.pgrid__glass--empty {
+  min-height: 360px;
+  display: grid;
+  place-items: center;
+}
+
+.pgrid__glass--reels {
+  min-height: 520px;
+}
+
+.pgrid__glass--teaser {
+  min-height: 430px;
+}
+
+.pgrid__glass--empty .pgrid__social-empty {
+  max-width: 600px;
+}
+
+@media (max-width: 639px) {
+  .pgrid__glass--reels {
+    min-height: 420px;
+  }
+
+  .pgrid__glass--teaser {
+    min-height: 340px;
+  }
+}
