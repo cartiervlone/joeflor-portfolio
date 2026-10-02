@@ -68,14 +68,34 @@ function EmptyWorkSection({ label, title, description, variant }: {
   label: string
   title: string
   description: string
-  variant: 'reels' | 'teaser'
-}) {
+  variant: 'reels'
+  }) {
   return (
     <div className={`home__glass pgrid__glass pgrid__glass--empty pgrid__glass--${variant}`}>
       <div className="pgrid__social-empty">
         <span className="pgrid__social-empty-label">{label}</span>
         <h3>{title}</h3>
         <p>{description}</p>
+      </div>
+    </div>
+  )
+}
+
+function TeaserWorkSection() {
+  return (
+    <div className="home__glass pgrid__glass pgrid__glass--teaser pgrid__teaser-card">
+      <div className="pgrid__teaser-media">
+        <iframe
+          src="https://player.cloudinary.com/embed/?cloud_name=wsshir2f&public_id=SR_EP_38_Teaser"
+          title="SR EP 38 Teaser"
+          allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+          allowFullScreen
+        />
+      </div>
+      <div className="pgrid__teaser-copy">
+        <span className="pgrid__social-empty-label">16:9 · Landscape</span>
+        <h3>SR EP 38 Teaser</h3>
+        <p>Podcast teaser edited for cinematic pacing, music, dialogue, and visual flow.</p>
       </div>
     </div>
   )
@@ -131,12 +151,7 @@ export default function ProjectsGrid() {
           </div>
           <p className="pgrid__section-note">Cinematic teasers and promotional cuts in the original landscape format.</p>
         </div>
-        <EmptyWorkSection
-          label="16:9 · Landscape"
-          title="Teaser work goes here."
-          description="This section is for landscape teasers like the one you're adding now, so it won't be forced into a vertical reel layout."
-          variant="teaser"
-        />
+        <TeaserWorkSection />
       </section>
     </section>
   )
