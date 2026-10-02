@@ -136,8 +136,6 @@ export default function Rail() {
           </ul>
         </nav>
 
-        </nav>
-
         <p className="rail__copy">
           &copy; {new Date().getFullYear()}
           <br />
