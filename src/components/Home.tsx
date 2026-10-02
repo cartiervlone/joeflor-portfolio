@@ -86,7 +86,9 @@ export default function Home() {
       )}
 
       <div className="home__sections" aria-label="Portfolio sections">
-        <section id="projects" className="home__section"><ProjectsGrid /></section>
+        <section id="projects" className="home__section">
+          <ProjectsGrid youtubeOnly />
+        </section>
         <section id="services" className="home__section"><ServicesGrid /></section>
         <section id="editing-style" className="home__section"><ShowcaseGrid /></section>
         <section id="experience" className="home__section"><TestimonialsGrid /></section>
