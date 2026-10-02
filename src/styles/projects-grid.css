@@ -73,8 +73,8 @@
 }
 .pgrid__hint svg { color: var(--orange); }
 @media (min-width: 1100px) {
-  .pgrid__glass { height: 100%; display: flex; }
-  .bento--projects { flex: 1 1 auto; height: 100%; }
+  .pgrid__glass { height: auto; display: flex; }
+  .bento--projects { flex: 0 0 auto; height: auto; }
   .bento__card--wide { grid-column: span 2; }
 }
 .bento__card--btn {
