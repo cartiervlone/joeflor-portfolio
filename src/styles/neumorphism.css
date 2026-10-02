@@ -39,19 +39,14 @@
 }
 
 body {
-  background:
-    radial-gradient(circle at 12% 8%, rgba(162,146,255,.22), transparent 30%),
-    radial-gradient(circle at 88% 88%, rgba(141,160,205,.16), transparent 34%),
-    var(--cream);
+  background: var(--cream);
 }
 
 /* Keep the existing animated contour background subtle so the interface,
    rather than the shader, carries the visual identity. */
 .hero-canvas {
   opacity: .22;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(160,145,255,.24), transparent 35%),
-    var(--cream);
+  background: var(--cream);
 }
 
 /* Main raised sheet. */
@@ -221,16 +216,11 @@ select,
 
 /* ---------- Dark-mode neumorphism refinements ---------- */
 [data-theme='dark'] body {
-  background:
-    radial-gradient(circle at 12% 8%, rgba(155,138,255,.16), transparent 30%),
-    radial-gradient(circle at 88% 88%, rgba(80,96,130,.14), transparent 34%),
-    var(--cream);
+  background: var(--cream);
 }
 
 [data-theme='dark'] .hero-canvas {
-  background:
-    radial-gradient(circle at 20% 20%, rgba(155,138,255,.14), transparent 35%),
-    var(--cream);
+  background: var(--cream);
 }
 
 [data-theme='dark'] .bento__card,
