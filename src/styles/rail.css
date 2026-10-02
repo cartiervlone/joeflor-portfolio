@@ -172,7 +172,7 @@
             mask: var(--icon-url) center / contain no-repeat;
   }
 
-  .rail__nav {
+  .rail__menu {
     width: 100%;
     margin-top: clamp(20px, 3vh, 32px);
     padding: 10px;
@@ -180,6 +180,15 @@
     border-radius: 22px;
     background: var(--paper);
     box-shadow: var(--neo-raised-small);
+  }
+
+  .rail__nav {
+    width: 100%;
+    margin-top: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
   }
   .rail__nav ul { display: flex; flex-direction: column; gap: 5px; list-style: none; }
   .rail__link {
@@ -276,14 +285,12 @@
 
   .rail__copy {
     width: 100%;
-    margin-top: auto;
-    padding-top: clamp(24px, 4vh, 40px);
+    margin: clamp(14px, 2vh, 20px) 0 0;
+    padding: clamp(14px, 2vh, 20px) 42px 8px;
     border-top: 1px solid var(--line);
     font-size: 12px;
     line-height: 1.7;
     color: var(--muted);
-    /* left-aligned past the accessibility button that sits in this corner */
-    padding-left: 52px;
     text-align: left;
   }
 
