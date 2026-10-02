@@ -42,7 +42,7 @@ const CARDS: HomeCard[] = [
   },
 ]
 
-function AutoSlideshow({ slides, title }: { slides: string[]; title: string }) {
+function AutoSlideshow({ slides }: { slides: string[] }) {
   const loop = [...slides, slides[0]]
 
   return (
@@ -65,7 +65,7 @@ export default function HomeBento() {
         <Link key={to} to={to} className="bento__card bento__card--home">
           <span className="bento__home-title">{title}</span>
 
-          <AutoSlideshow slides={slides} title={title} />
+          <AutoSlideshow slides={slides} />
 
           <span className="bento__desc">{desc}</span>
         </Link>
