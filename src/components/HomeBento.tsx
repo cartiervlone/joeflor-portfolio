@@ -69,8 +69,10 @@ export default function HomeBento() {
     <nav className="bento bento--home" aria-label="Explore the portfolio">
       {CARDS.map(({ to, title, desc, slides, Icon }) => (
         <Link key={to} to={to} className="bento__card bento__card--home">
-          <span className="bento__home-icon" aria-hidden="true"><Icon size={24} weight="duotone" /></span>
-          <span className="bento__home-title">{title}</span>
+          <span className="bento__home-top">
+            <span className="bento__home-icon" aria-hidden="true"><Icon size={24} weight="duotone" /></span>
+            <span className="bento__home-title">{title}</span>
+          </span>
 
           <AutoSlideshow slides={slides} />
 
