@@ -101,7 +101,7 @@ function TeaserWorkSection() {
   )
 }
 
-export default function ProjectsGrid() {
+export default function ProjectsGrid({ youtubeOnly = false }: { youtubeOnly?: boolean }) {
   return (
     <section className="pgrid" aria-labelledby="projects-title">
       <header className="pgrid__head">
@@ -127,32 +127,36 @@ export default function ProjectsGrid() {
         </div>
       </section>
 
-      <section className="pgrid__section" aria-labelledby="reels-work-title">
-        <div className="pgrid__section-head">
-          <div>
-            <span className="pgrid__section-kicker">02 · Reels</span>
-            <h2 className="pgrid__section-title" id="reels-work-title">Short-Form Reels</h2>
-          </div>
-          <p className="pgrid__section-note">Vertical 9:16 social edits, reels, Shorts, and other short-form content.</p>
-        </div>
-        <EmptyWorkSection
-          label="9:16 · Vertical"
-          title="Short-form work goes here."
-          description="This section is reserved for your vertical reels and Shorts. We'll play the videos directly in the portfolio once you add them."
-          variant="reels"
-        />
-      </section>
+      {!youtubeOnly && (
+        <>
+          <section className="pgrid__section" aria-labelledby="reels-work-title">
+            <div className="pgrid__section-head">
+              <div>
+                <span className="pgrid__section-kicker">02 · Reels</span>
+                <h2 className="pgrid__section-title" id="reels-work-title">Short-Form Reels</h2>
+              </div>
+              <p className="pgrid__section-note">Vertical 9:16 social edits, reels, Shorts, and other short-form content.</p>
+            </div>
+            <EmptyWorkSection
+              label="9:16 · Vertical"
+              title="Short-form work goes here."
+              description="This section is reserved for your vertical reels and Shorts. We'll play the videos directly in the portfolio once you add them."
+              variant="reels"
+            />
+          </section>
 
-      <section className="pgrid__section" aria-labelledby="teaser-work-title">
-        <div className="pgrid__section-head">
-          <div>
-            <span className="pgrid__section-kicker">03 · Teasers</span>
-            <h2 className="pgrid__section-title" id="teaser-work-title">Podcast &amp; Video Teasers</h2>
-          </div>
-          <p className="pgrid__section-note">Cinematic teasers and promotional cuts in the original landscape format.</p>
-        </div>
-        <TeaserWorkSection />
-      </section>
+          <section className="pgrid__section" aria-labelledby="teaser-work-title">
+            <div className="pgrid__section-head">
+              <div>
+                <span className="pgrid__section-kicker">03 · Teasers</span>
+                <h2 className="pgrid__section-title" id="teaser-work-title">Podcast &amp; Video Teasers</h2>
+              </div>
+              <p className="pgrid__section-note">Cinematic teasers and promotional cuts in the original landscape format.</p>
+            </div>
+            <TeaserWorkSection />
+          </section>
+        </>
+      )}
     </section>
   )
 }
