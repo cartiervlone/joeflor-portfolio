@@ -147,8 +147,8 @@ select,
 }
 
 /* Toolbar-like strips and navigation use the same soft sheet language. */
-.home .tools-marquee,
-.rail__nav {
+ .home .tools-marquee,
+.rail__menu {
   border-color: transparent !important;
   box-shadow: var(--neo-pressed);
   background: rgba(233,236,245,.58);
@@ -252,8 +252,8 @@ select,
     -9px -9px 20px var(--neo-light) !important;
 }
 
-[data-theme='dark'] .home .tools-marquee,
-[data-theme='dark'] .rail__nav {
+[data-theme='dark']  .home .tools-marquee,
+[data-theme='dark'] .rail__menu {
   background: rgba(37,44,60,.58);
   box-shadow: var(--neo-pressed);
 }
@@ -311,12 +311,19 @@ select,
 
 /* ---------- Hidden rail: one surface, not nested boxes ---------- */
 @media (min-width: 1100px) {
-  .rail__nav {
+  .rail__menu {
     background: var(--paper) !important;
     box-shadow: var(--neo-raised-small) !important;
     border: 1px solid var(--line-strong) !important;
     padding: 10px !important;
     margin-top: clamp(18px, 2.5vh, 26px);
+  }
+
+  .rail__nav {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+    padding: 0 !important;
   }
 
   .rail__nav ul {
