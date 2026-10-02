@@ -427,3 +427,124 @@
   .bento__badge-tag, .bento__review-work { font-size: 12px; }
   .bento__review-role { font-size: 12.5px; }
 }
+
+
+/* ---------- Homepage feature cards ----------
+   Four tall cards with a centered title, automatic image slideshow, and the
+   original card description underneath. The image set is intentionally data-
+   driven so the temporary thumbnails can be replaced with the user's photos
+   later without changing the layout. */
+.bento--home {
+  gap: clamp(16px, 1.6vw, 24px);
+  align-items: stretch;
+}
+
+.bento__card--home {
+  min-height: 520px;
+  padding: clamp(20px, 2vw, 30px);
+  justify-content: flex-start;
+  text-align: center;
+  border-radius: calc(var(--radius-card) + 4px);
+}
+
+.bento__card--home:hover {
+  transform: translateY(-3px);
+  border-color: var(--line-strong);
+}
+
+.bento__home-title {
+  display: block;
+  flex: none;
+  margin: 0 auto;
+  font-family: var(--font-display);
+  font-size: clamp(20px, 1.55vw, 28px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+}
+
+.bento__slideshow {
+  position: relative;
+  width: 100%;
+  height: clamp(250px, 24vw, 360px);
+  margin-top: clamp(20px, 2vw, 30px);
+  overflow: hidden;
+  flex: none;
+  border-radius: calc(var(--radius-card) - 2px);
+  background: var(--white);
+  box-shadow: var(--neo-pressed);
+}
+
+.bento__slideshow-track {
+  display: flex;
+  width: 600%;
+  height: 100%;
+  animation: bento-home-slide 24s infinite;
+  will-change: transform;
+}
+
+.bento__slide {
+  flex: 0 0 16.666667%;
+  width: 16.666667%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.bento__slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bento__card--home .bento__desc {
+  display: block;
+  margin: clamp(18px, 2vw, 26px) auto 0;
+  max-width: 42ch;
+  font-size: clamp(13px, 0.9vw, 16px);
+  line-height: 1.55;
+}
+
+@keyframes bento-home-slide {
+  0%, 14% { transform: translateX(0); }
+  18%, 31% { transform: translateX(-16.666667%); }
+  35%, 48% { transform: translateX(-33.333333%); }
+  52%, 65% { transform: translateX(-50%); }
+  69%, 82% { transform: translateX(-66.666667%); }
+  86%, 100% { transform: translateX(-83.333333%); }
+}
+
+@media (max-width: 1099px) {
+  .bento--home {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .bento__card--home {
+    min-height: 480px;
+  }
+
+  .bento__slideshow {
+    height: 250px;
+  }
+}
+
+@media (max-width: 639px) {
+  .bento--home {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .bento__card--home {
+    min-height: 460px;
+  }
+
+  .bento__slideshow {
+    height: 230px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bento__slideshow-track {
+    animation: none;
+  }
+}
