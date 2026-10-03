@@ -32,7 +32,7 @@ export const profile: Profile = {
   firstName: 'Joeflor',
   handle: '@plordinary',
   role: 'Video Editor · Podcast Video Editor · Post-Production Specialist · Content Creator · Multimedia Editor',
-  avatarSrc: '/avatar.svg',
+  avatarSrc: '/profile-avatar.svg',
   verifiedLabel: 'Portfolio profile',
   email: 'jooplor2015@gmail.com',
   location: 'Cebu City, Philippines · Freelance',
@@ -44,7 +44,7 @@ export const profile: Profile = {
   displayName: { line1: 'Video that flows.', line2: 'Stories that connect.' },
   hero: {
     body: 'I edit podcasts, YouTube videos, social content, gaming montages, and narrative projects with a focus on rhythm, clean transitions, sound, and cinematic flow.',
-    portraitSrc: '/avatar.svg',
+    portraitSrc: '/profile-slideshow.svg',
     portraitAlt: 'Joeflor Hinobiada',
   },
   socials: [
