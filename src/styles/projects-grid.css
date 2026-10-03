@@ -869,4 +869,4 @@
   .pgrid__teaser-copy {
     padding: 4px 2px 2px;
   }
-}\n/* Dark mode: remove light shimmer/white gradient surfaces from project UI. */\n[data-theme='dark'] .ppanel__skeleton {\n  background: var(--paper) !important;\n  background-image: none !important;\n}\n
+}
