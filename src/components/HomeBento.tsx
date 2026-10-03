@@ -20,6 +20,7 @@ const YOUTUBE_SLIDES = [
 const SERVICES_SLIDES = [
   'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&fm=jpg&q=80&w=1600',
   'https://images.unsplash.com/photo-1695218716405-5b813000e994?auto=format&fit=crop&fm=jpg&q=80&w=1600',
+  'https://images.unsplash.com/photo-1757845524683-611470b2d7ce?auto=format&fit=crop&fm=jpg&q=80&w=1600',
   'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&fm=jpg&q=80&w=1600',
 ]
 
@@ -73,9 +74,11 @@ const CARDS: HomeCard[] = [
 ]
 
 function AutoSlideshow({ slides }: { slides: string[] }) {
+  const isThree = slides.length === 3
+
   return (
     <div className="bento__slideshow" aria-hidden="true">
-      <div className="bento__slideshow-track">
+      <div className={isThree ? 'bento__slideshow-track bento__slideshow-track--three' : 'bento__slideshow-track'}>
         {[...slides, slides[0]].map((src, index) => (
           <div className="bento__slide" key={src + '-' + index}>
             <img src={src} alt="" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
