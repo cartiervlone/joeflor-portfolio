@@ -12,8 +12,11 @@ const SERVICES = [
 const SPECIALTIES = ['Pacing','Music sync','Dialogue cleanup','Multicam','Split-cam','B-roll','Transitions','Captions','Sound design','Color','Cinematic flow','Storytelling']
 
 const TOOLS = [
-  ['DaVinci Resolve','davinciresolve'], ['Premiere Pro','adobepremierepro'],
-  ['After Effects','adobeaftereffects'], ['CapCut','capcut'], ['Photoshop','adobephotoshop'],
+  ['DaVinci Resolve','davinciresolve','Color grading · Cutting · Fusion / 3D effects'],
+  ['Premiere Pro','adobepremierepro','Multicam · Editing · Audio · Captions'],
+  ['After Effects','adobeaftereffects','Motion graphics · Compositing · Visual effects'],
+  ['CapCut','capcut','Short-form edits · Captions · Social content'],
+  ['Photoshop','adobephotoshop','Thumbnails · Image cleanup · Graphic assets'],
 ] as const
 
 const STEPS = [
@@ -125,7 +128,7 @@ function Folder({progress}:{progress:number}) {
         <article className="svc-page svc-page--tools" style={pageStyle(7)}>
           <div className="svc-page-topline"><span>TOOLS I WORK WITH</span><i>TOOLS</i></div>
           <div className="svc-tools-heading"><span><Toolbox size={27} weight="duotone"/></span><div><label>THE TOOLKIT</label><h2>My editing tools.</h2></div></div>
-          <div className="svc-tools">{TOOLS.map(([name,slug])=><div className="svc-tool" tabIndex={0} data-tooltip={name} aria-label={name} key={name}><span className="svc-tool-logo"><ToolLogo slug={slug} name={name}/></span><b className="svc-tool-name">{name}</b></div>)}</div>
+          <div className="svc-tools">{TOOLS.map(([name,slug,detail])=><div className="svc-tool" tabIndex={0} data-tooltip={name} aria-label={name} key={name}><span className="svc-tool-logo"><ToolLogo slug={slug} name={name}/></span><b className="svc-tool-name">{name}</b><small className="svc-tool-detail">{detail}</small></div>)}</div>
           <p className="svc-tool-hint">Hover or focus a logo to see its name.</p>
         </article>
       </div>
