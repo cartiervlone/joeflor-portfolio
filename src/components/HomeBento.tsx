@@ -35,7 +35,7 @@ const LETS_WORK_SLIDES = [
   'https://images.unsplash.com/photo-1764664035154-379971f0e936?auto=format&fit=crop&fm=jpg&q=80&w=1600',
   'https://images.unsplash.com/photo-1761850215840-2775d7229cad?auto=format&fit=crop&fm=jpg&q=80&w=1600',
   'https://images.unsplash.com/photo-1764664035176-8e92ff4f128e?auto=format&fit=crop&fm=jpg&q=80&w=1600',
-  'https://images.unsplash.com/photo-1757845524683-611470b2d7ce?auto=format&fit=crop&fm=jpg&q=80&w=1600',
+  'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&fm=jpg&q=80&w=1600',
 ]
 
 const CARDS: HomeCard[] = [
