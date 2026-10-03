@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { MapPin } from '@/components/slab'
 import { profile } from '@/data/profile'
 
@@ -22,6 +23,58 @@ const ABOUT_PHOTOS = [
     alt: 'Joeflor Hinobiada in a white shirt',
   },
 ]
+
+function AboutSlideshow() {
+  const [slideIndex, setSlideIndex] = useState(0)
+  const [transitioning, setTransitioning] = useState(true)
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setSlideIndex((current) => current + 1)
+      setTransitioning(true)
+    }, 3700)
+
+    return () => window.clearInterval(timer)
+  }, [])
+
+  useEffect(() => {
+    if (slideIndex !== ABOUT_PHOTOS.length) return
+
+    const resetTimer = window.setTimeout(() => {
+      setTransitioning(false)
+      setSlideIndex(0)
+      window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(() => setTransitioning(true))
+      })
+    }, 700)
+
+    return () => window.clearTimeout(resetTimer)
+  }, [slideIndex])
+
+  return (
+    <div className="agrid__portrait-stage" aria-label="Joeflor Hinobiada photo slideshow">
+      <div
+        className="agrid__portrait-track"
+        style={{
+          transform: `translateX(-${slideIndex * 25}%)`,
+          transition: transitioning ? 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)' : 'none',
+        }}
+      >
+        {[...ABOUT_PHOTOS, ABOUT_PHOTOS[0]].map((photo, index) => (
+          <div className="agrid__portrait-slide" key={photo.src + '-' + index}>
+            <img
+              className="agrid__portrait-image"
+              src={photo.src}
+              alt={photo.alt}
+              loading={index === 0 ? 'eager' : 'lazy'}
+              decoding="async"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
 
 export default function AboutGrid() {
   return (
@@ -102,21 +155,7 @@ export default function AboutGrid() {
 
         <div className="agrid__portrait">
           <div className="agrid__portrait-shell">
-            <div className="agrid__portrait-stage" aria-label="Joeflor Hinobiada photo slideshow">
-              <div className="agrid__portrait-track">
-                {[...ABOUT_PHOTOS, ...ABOUT_PHOTOS].map((photo, index) => (
-                  <div className="agrid__portrait-slide" key={photo.src}>
-                    <img
-                      className="agrid__portrait-image"
-                      src={photo.src}
-                      alt={photo.alt}
-                      loading={index === 0 ? 'eager' : 'lazy'}
-                      decoding="async"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
+            <AboutSlideshow />
           </div>
         </div>
       </div>
