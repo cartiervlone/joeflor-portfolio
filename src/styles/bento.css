@@ -503,7 +503,7 @@
   display: flex;
   width: 600%;
   height: 100%;
-  animation: bento-home-slide 24s infinite;
+  animation: bento-home-slide 20s linear infinite;
   will-change: transform;
 }
 
@@ -530,8 +530,11 @@
 }
 
 @keyframes bento-home-slide {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  0%, 18% { transform: translateX(0); }
+  22%, 43% { transform: translateX(-12.5%); }
+  47%, 68% { transform: translateX(-25%); }
+  72%, 93% { transform: translateX(-37.5%); }
+  97%, 100% { transform: translateX(-50%); }
 }
 
 @media (max-width: 1099px) {
