@@ -248,12 +248,13 @@
   }
   .hprofile__avatar {
     width: 56px;
-    height: 56px;
-    border-radius: 50%;
+    height: 68px;
+    padding: 5px;
+    border-radius: 18px;
     object-fit: cover;
-    object-position: top;
-    background: var(--white);
-    box-shadow: inset 0 0 0 1px var(--line), 0 6px 16px -8px rgba(11, 30, 63, 0.35);
+    object-position: center top;
+    background: var(--paper);
+    box-shadow: var(--neo-raised-small);
   }
   .hprofile__who { display: flex; flex-direction: column; min-width: 0; }
   .hprofile__name {
