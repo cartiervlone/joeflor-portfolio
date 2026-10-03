@@ -362,3 +362,55 @@
 @media (max-width: 639px) {
   .sgrid__stage-chip, .sgrid__service-index, .sgrid__chip { font-size: 12px; }
 }
+
+/* ---------- Final dark-mode service-process surface ----------
+   The editing-process band is a nested surface inside the main Services
+   sheet. Keep it on the same dark neumorphic palette instead of the old
+   light-theme panel token. */
+[data-theme='dark'] .sgrid__method {
+  --ink: var(--navy);
+  --ink-muted: var(--muted);
+  --ink-line: rgba(255,255,255,.09);
+  --ink-plate: rgba(255,255,255,.035);
+  --ink-chip: rgba(255,255,255,.06);
+  --ink-ghost: rgba(255,255,255,.045);
+  --ink-eyebrow: var(--orange);
+  background: var(--paper) !important;
+  background-image: none !important;
+  color: var(--navy) !important;
+  box-shadow: var(--neo-raised) !important;
+  border: 1px solid var(--line-strong);
+}
+
+[data-theme='dark'] .sgrid__stage {
+  background: rgba(255,255,255,.035) !important;
+  background-image: none !important;
+  color: var(--navy) !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.08) !important;
+}
+
+[data-theme='dark'] .sgrid__stage-label,
+[data-theme='dark'] .sgrid__stage-body,
+[data-theme='dark'] .sgrid__stage-chip {
+  color: var(--navy) !important;
+}
+
+[data-theme='dark'] .sgrid__stage-body {
+  color: var(--muted) !important;
+}
+
+[data-theme='dark'] .sgrid__stage-chip {
+  background: rgba(255,255,255,.06) !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.08) !important;
+}
+
+[data-theme='dark'] .sgrid__stage-ghost {
+  color: rgba(255,255,255,.035) !important;
+}
+
+[data-theme='dark'] .sgrid__stage-icon {
+  background: color-mix(in srgb, var(--orange) 14%, transparent) !important;
+  color: var(--orange) !important;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--orange) 28%, transparent) !important;
+}
+\n
