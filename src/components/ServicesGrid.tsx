@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react'
-import { CheckCircle, FilmSlate, Microphone, YoutubeLogo, GameController, MonitorPlay } from '@/components/slab'
+import { CheckCircle, FilmSlate, Microphone, YoutubeLogo, GameController, MonitorPlay, Palette, Waveform } from '@/components/slab'
 
 const SERVICES = [
   ['01', 'Podcast & Interview Editing', 'Multicam editing, dialogue cleanup, pacing, sync, split-cam layouts, and polished long-form episodes.', Microphone, ['Multicam', 'Dialogue', 'Pacing']],
@@ -61,6 +61,30 @@ export default function ServicesGrid() {
               </li>
             ))}
           </ul>
+
+          <div className="sgrid__post">
+            <div className="sgrid__post-head">
+              <h2 className="sgrid__post-title">Post-production</h2>
+              <p className="sgrid__post-sub">The finishing work that gives every edit its final character.</p>
+            </div>
+            <ul className="sgrid__post-list" role="list">
+              {[
+                ['Color Grading', 'Cinematic looks, color correction, and mood enhancement.', Palette],
+                ['Sound Design', 'Music, SFX, dialogue cleanup, and audio mixing.', Waveform],
+                ['Cinematic Editing', 'Story-driven edits, trailers, and cinematic sequences.', FilmSlate],
+              ].map(([title, description, Icon]) => (
+                <li key={title as string} className="sgrid__post-card">
+                  <span className="sgrid__post-icon" aria-hidden="true">
+                    <Icon size={20} weight="duotone" />
+                  </span>
+                  <span className="sgrid__post-copy">
+                    <span className="sgrid__post-title-card">{title as string}</span>
+                    <span className="sgrid__post-description">{description as string}</span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>
