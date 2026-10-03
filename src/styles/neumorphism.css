@@ -538,3 +538,73 @@ select,
 [data-theme='dark'] .cgrid__hint {
   color: var(--muted);
 }
+
+
+/* ---------- Dark surfaces: remove light/white gradients ----------
+   Major portfolio sheets and cards use the same neumorphic surface in both
+   themes. In dark mode they must not inherit light-theme gradient washes or
+   white highlights that flatten the contrast. */
+[data-theme='dark'] .home__glass,
+[data-theme='dark'] .pgrid__glass,
+[data-theme='dark'] .sgrid__glass,
+[data-theme='dark'] .tgrid__glass,
+[data-theme='dark'] .agrid__glass,
+[data-theme='dark'] .cgrid__glass,
+[data-theme='dark'] .ktools__glass {
+  background: var(--paper) !important;
+  background-image: none !important;
+  box-shadow: var(--neo-raised) !important;
+  border-color: var(--line-strong) !important;
+}
+
+/* Bento cards and common paper tiles stay on a single dark surface. */
+[data-theme='dark'] .bento__card,
+[data-theme='dark'] .bento__review,
+[data-theme='dark'] .aig__card,
+[data-theme='dark'] .tool-card,
+[data-theme='dark'] .projects__tabs,
+[data-theme='dark'] .projects__apps > *,
+[data-theme='dark'] .ppanel__stage,
+[data-theme='dark'] .pgrid__social-empty,
+[data-theme='dark'] .pgrid__teaser-card {
+  background: var(--paper) !important;
+  background-image: none !important;
+}
+
+/* Mobile shell controls: replace the light white-to-paper gradient with the
+   same dark neumorphic surface. */
+[data-theme='dark'] .tabbar,
+[data-theme='dark'] .hprofile,
+[data-theme='dark'] .hsec,
+[data-theme='dark'] .htile,
+[data-theme='dark'] .htile__glyph {
+  background: var(--paper) !important;
+  background-image: none !important;
+}
+
+/* Light-theme image/logo plates intentionally remain light where their source
+   artwork needs a light backing. These are not page surfaces. */
+[data-theme='dark'] .agrid__mark,
+[data-theme='dark'] .agrid__cell-mark--img,
+[data-theme='dark'] .aig__mark {
+  background: #F4F4ED !important;
+  background-image: none !important;
+}
+
+/* Faux browser/loading surfaces should also stay coherent in dark mode. */
+[data-theme='dark'] .ppanel__skeleton,
+[data-theme='dark'] .ext-card__chrome,
+[data-theme='dark'] .ext-card__stage,
+[data-theme='dark'] .funnels__modal-bar {
+  background: var(--paper) !important;
+  background-image: none !important;
+  color: var(--navy) !important;
+  border-color: var(--line-strong) !important;
+}
+
+/* Preserve deliberately dark media/player surfaces. */
+[data-theme='dark'] .pgrid__video,
+[data-theme='dark'] .tgrid__stage,
+[data-theme='dark'] .pgrid__teaser-media {
+  background: #111827 !important;
+}
