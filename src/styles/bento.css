@@ -507,11 +507,22 @@
   will-change: transform;
 }
 
+.bento__slideshow-track--three {
+  width: 400%;
+  animation-name: bento-home-slide-three;
+  animation-duration: 12s;
+}
+
 .bento__slide {
   flex: 0 0 20%;
   width: 20%;
   height: 100%;
   overflow: hidden;
+}
+
+.bento__slideshow-track--three .bento__slide {
+  flex-basis: 25%;
+  width: 25%;
 }
 
 .bento__slide img {
