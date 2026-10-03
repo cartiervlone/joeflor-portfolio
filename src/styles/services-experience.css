@@ -257,3 +257,43 @@
   color:#253449;
   background:rgba(228,238,248,.97);
 }
+
+/* Tool capability text revealed beneath each logo on hover/focus */
+.svc-tool-detail{
+  position:absolute;
+  left:50%;
+  bottom:-34px;
+  width:max-content;
+  max-width:150px;
+  transform:translate(-50%,-4px);
+  padding:7px 9px;
+  border-radius:9px;
+  color:#697b91;
+  background:rgba(242,247,252,.96);
+  box-shadow:8px 10px 20px rgba(71,104,141,.15),-6px -6px 16px rgba(255,255,255,.72);
+  font-size:8px;
+  line-height:1.35;
+  font-weight:700;
+  letter-spacing:.015em;
+  text-align:center;
+  white-space:normal;
+  opacity:0;
+  pointer-events:none;
+  z-index:30;
+  transition:opacity .2s ease,transform .2s ease;
+}
+.svc-tool:hover .svc-tool-detail,
+.svc-tool:focus-visible .svc-tool-detail{
+  opacity:1;
+  transform:translate(-50%,0);
+}
+.svc-tool:hover,
+.svc-tool:focus-visible{z-index:40}
+[data-theme='dark'] .svc-tool-detail{
+  color:#b8c7d9;
+  background:rgba(39,52,70,.97);
+  box-shadow:8px 10px 20px rgba(3,7,13,.5),-6px -6px 16px rgba(87,112,140,.18);
+}
+@media(max-width:639px){
+  .svc-tool-detail{bottom:-38px;max-width:128px;font-size:7px}
+}
