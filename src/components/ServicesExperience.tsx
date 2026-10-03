@@ -52,7 +52,7 @@ function useProgress(ref: RefObject<HTMLDivElement | null>) {
 }
 
 function ToolLogo({slug,name}:{slug:string;name:string}) {
-  return <img src={'https://cdn.simpleicons.org/'+slug} alt={name+' logo'} loading="eager" decoding="async" />
+  return <img src={'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@16.33.0/icons/'+slug} alt={name+' logo'} loading="eager" decoding="async" />
 }
 
 function Folder({progress}:{progress:number}) {
