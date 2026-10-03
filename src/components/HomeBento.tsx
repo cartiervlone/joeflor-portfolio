@@ -11,10 +11,10 @@ type HomeCard = {
 }
 
 const YOUTUBE_SLIDES = [
-  'https://i.ytimg.com/vi/OT6A2AwJSNQ/hqdefault.jpg',
-  'https://i.ytimg.com/vi/hmMa4F01CUI/hqdefault.jpg',
-  'https://i.ytimg.com/vi/BlgqEU2CyBM/hqdefault.jpg',
-  'https://i.ytimg.com/vi/5KH3tDAdIso/hqdefault.jpg',
+  'https://res.cloudinary.com/wsshir2f/image/upload/v1791007207/METRO_777.png',
+  'https://res.cloudinary.com/wsshir2f/image/upload/v1791007207/Wutitdo.png',
+  'https://res.cloudinary.com/wsshir2f/image/upload/v1791007207/IMRP.png',
+  'https://res.cloudinary.com/wsshir2f/image/upload/v1791007205/COMRP.png',
 ]
 
 const SERVICES_SLIDES = [
