@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties, type RefObject } from 'react'
+import { useEffect, useRef, useState, type RefObject } from 'react'
 import { ArrowDown, ArrowRight, Briefcase, FilmSlate, GameController, Microphone, Sparkle, Toolbox, YoutubeLogo } from '@/components/slab'
 import { SCROLLER_ID } from '@/hooks/useLenis'
 
@@ -23,7 +23,7 @@ const STEPS = [
 const clamp = (v:number) => Math.max(0, Math.min(1, v))
 const smooth = (v:number) => { const t=clamp(v); return t*t*(3-2*t) }
 
-function useProgress(ref: RefObject<HTMLElement | null>) {
+function useProgress(ref: RefObject<HTMLDivElement | null>) {
   const [progress,setProgress]=useState(0)
   useEffect(()=>{
     const scroller=document.getElementById(SCROLLER_ID), scene=ref.current
@@ -72,13 +72,13 @@ function Beyond(){ return <section className="svc-beyond"><div className="svc-fo
 function Workflow(){ return <section className="svc-workflow"><div className="svc-section-label"><span>07</span><b>FROM FOOTAGE TO FINAL</b></div><div className="svc-workflow-head"><div><small>WORKING TOGETHER</small><h2>A clear path from brief to delivery.</h2></div><p>The same intention carries through the client experience: understand the project, build the edit, refine the details, and deliver the finished piece.</p></div><ol>{STEPS.map(([n,t,b])=><li key={n}><span>{n}</span><strong>{t}</strong><p>{b}</p></li>)}</ol></section> }
 
 export default function ServicesExperience(){
-  const sceneRef=useRef<HTMLElement>(null), beyondRef=useRef<HTMLElement>(null), progress=useProgress(sceneRef)
+  const sceneRef=useRef<HTMLDivElement>(null), beyondRef=useRef<HTMLElement>(null), progress=useProgress(sceneRef)
   const [hint,setHint]=useState(true)
   useEffect(()=>{const s=document.getElementById(SCROLLER_ID); if(!s)return; const f=()=>setHint(s.scrollTop<80); f(); s.addEventListener('scroll',f,{passive:true}); return()=>s.removeEventListener('scroll',f)},[])
   const jump=()=>beyondRef.current?.scrollIntoView({behavior:'smooth',block:'start'})
   return <div className="svc-experience">
     <section className="svc-arrival"><div className="svc-fog svc-fog--arrival"/><div className={'svc-arrival-copy'+(hint?' is-visible':'')}><small>SERVICES / 01</small><h1>What I offer.</h1><p>Scroll to open the folder.</p><span><ArrowDown size={16}/> Scroll</span></div></section>
-    <section className="svc-folder-scene" ref={sceneRef}><div className="svc-folder-sticky"><div className="svc-fog svc-fog--scene"/><div className="svc-scene-copy" style={{opacity:1-smooth(progress*1.9)}}><span>SERVICES / 02</span><p>Open the folder to explore the work.</p></div><Folder progress={progress}/><div className="svc-folder-finish" style={{opacity:smooth((progress-.88)/.12),transform:'translate(-50%,'+((1-smooth((progress-.88)/.12))*16)+'px)'}}><b>READY FOR THE NEXT CUT.</b><button type="button" onClick={jump}>Continue <ArrowRight size={15}/></button></div></div></section>
+    <div className="svc-folder-scene" ref={sceneRef}><div className="svc-folder-sticky"><div className="svc-fog svc-fog--scene"/><div className="svc-scene-copy" style={{opacity:1-smooth(progress*1.9)}}><span>SERVICES / 02</span><p>Open the folder to explore the work.</p></div><Folder progress={progress}/><div className="svc-folder-finish" style={{opacity:smooth((progress-.88)/.12),transform:'translate(-50%,'+((1-smooth((progress-.88)/.12))*16)+'px)'}}><b>READY FOR THE NEXT CUT.</b><button type="button" onClick={jump}>Continue <ArrowRight size={15}/></button></div></div></div>
     <div ref={beyondRef}><Beyond/><Workflow/></div>
     <section className="svc-cta"><div><Briefcase size={23} weight="duotone"/></div><small>THE NEXT CUT</small><h2>Have a project in mind?</h2><p>Tell me what you're making and what you want the edit to feel like.</p><a href="/contact">Let's Work <ArrowRight size={16}/></a></section>
   </div>
