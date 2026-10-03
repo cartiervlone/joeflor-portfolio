@@ -84,7 +84,22 @@ export default function AboutGrid() {  return (
           </div>
         </div>
 
-        <div className="agrid__portrait">\n          <div className="agrid__portrait-shell">\n            <div className="agrid__portrait-stage">\n              <img\n                className="agrid__portrait-image"\n                src="/profile-slideshow.svg"\n                alt="Joeflor Hinobiada photo slideshow"\n                loading="eager"\n                decoding="async"\n                width={400}\n                height={600}\n              />\n            </div>\n            <span className="agrid__portrait-label">About Me</span>\n          </div>\n        </div>    </div>
+        <div className="agrid__portrait">
+          <div className="agrid__portrait-shell">
+            <div className="agrid__portrait-stage">
+              <img
+                className="agrid__portrait-image"
+                src="/profile-slideshow.svg"
+                alt="Joeflor Hinobiada photo slideshow"
+                loading="eager"
+                decoding="async"
+                width={400}
+                height={600}
+              />
+            </div>
+            <span className="agrid__portrait-label">About Me</span>
+          </div>
+        </div>    </div>
     </section>
   )
 }
