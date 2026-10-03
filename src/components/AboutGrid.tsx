@@ -8,7 +8,23 @@ const CAPABILITIES: Array<[string, string]> = [
   ['04', 'Film & Cinematic Editing'],
 ]
 
-export default function AboutGrid() {  return (
+const ABOUT_PHOTOS = [
+  {
+    src: 'https://res.cloudinary.com/wsshir2f/image/upload/v1791002886/abt3.jpg',
+    alt: 'Joeflor Hinobiada in a black T-shirt',
+  },
+  {
+    src: 'https://res.cloudinary.com/wsshir2f/image/upload/v1791002885/abt2.jpg',
+    alt: 'Joeflor Hinobiada mirror photo',
+  },
+  {
+    src: 'https://res.cloudinary.com/wsshir2f/image/upload/v1791002886/abt1.jpg',
+    alt: 'Joeflor Hinobiada in a white shirt',
+  },
+]
+
+export default function AboutGrid() {
+  return (
     <section className="pgrid agrid" aria-labelledby="about-title">
       <header className="pgrid__head">
         <span className="pgrid__eyebrow">About</span>
@@ -86,18 +102,24 @@ export default function AboutGrid() {  return (
 
         <div className="agrid__portrait">
           <div className="agrid__portrait-shell">
-            <div className="agrid__portrait-stage">
-              <img
-                className="agrid__portrait-image"
-                src="/profile-slideshow.svg"
-                alt="Joeflor Hinobiada photo slideshow"
-                loading="eager"
-                decoding="async"
-                width={400}
-                height={600}
-              />
-            </div></div>
-        </div>    </div>
+            <div className="agrid__portrait-stage" aria-label="Joeflor Hinobiada photo slideshow">
+              <div className="agrid__portrait-track">
+                {ABOUT_PHOTOS.map((photo, index) => (
+                  <div className="agrid__portrait-slide" key={photo.src}>
+                    <img
+                      className="agrid__portrait-image"
+                      src={photo.src}
+                      alt={photo.alt}
+                      loading={index === 0 ? 'eager' : 'lazy'}
+                      decoding="async"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   )
 }
