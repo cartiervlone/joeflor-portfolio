@@ -28,7 +28,6 @@ const ABOUT_SLIDES = [
   'https://res.cloudinary.com/wsshir2f/image/upload/v1791002886/abt3.jpg',
   'https://res.cloudinary.com/wsshir2f/image/upload/v1791002885/abt2.jpg',
   'https://res.cloudinary.com/wsshir2f/image/upload/v1791002886/abt1.jpg',
-  'https://res.cloudinary.com/wsshir2f/image/upload/v1791002886/abt3.jpg',
 ]
 
 const LETS_WORK_SLIDES = [
