@@ -7,21 +7,20 @@ type HomeCard = {
   desc: string
   slides: string[]
   Icon: Icon
-  slideCount: 3 | 4
+  slideCount: 4
 }
 
 const YOUTUBE_SLIDES = [
-  'https://i.ytimg.com/vi/OT6A2AwJSNQ/maxresdefault.jpg',
-  'https://i.ytimg.com/vi/hmMa4F01CUI/maxresdefault.jpg',
-  'https://i.ytimg.com/vi/BlgqEU2CyBM/maxresdefault.jpg',
-  'https://i.ytimg.com/vi/5KH3tDAdIso/maxresdefault.jpg',
+  'https://i.ytimg.com/vi/OT6A2AwJSNQ/hqdefault.jpg',
+  'https://i.ytimg.com/vi/hmMa4F01CUI/hqdefault.jpg',
+  'https://i.ytimg.com/vi/BlgqEU2CyBM/hqdefault.jpg',
+  'https://i.ytimg.com/vi/5KH3tDAdIso/hqdefault.jpg',
 ]
 
 const SERVICES_SLIDES = [
   'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&fm=jpg&q=80&w=1600',
   'https://images.unsplash.com/photo-1695218716405-5b813000e994?auto=format&fit=crop&fm=jpg&q=80&w=1600',
-  'https://images.unsplash.com/photo-1757845524683-611470b2d7ce?auto=format&fit=crop&fm=jpg&q=80&w=1600',
-  'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&fm=jpg&q=80&w=1600',
+  'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&fm=jpg&q=80&w=1600',
 ]
 
 const ABOUT_SLIDES = [
@@ -61,7 +60,7 @@ const CARDS: HomeCard[] = [
     desc: 'How gaming montages grew into freelance post-production work.',
     slides: ABOUT_SLIDES,
     Icon: User,
-    slideCount: 3,
+    slideCount: 4,
   },
   {
     to: '/contact',
@@ -73,11 +72,11 @@ const CARDS: HomeCard[] = [
   },
 ]
 
-function AutoSlideshow({ slides, slideCount }: { slides: string[]; slideCount: 3 | 4 }) {
+function AutoSlideshow({ slides }: { slides: string[] }) {
   return (
     <div className="bento__slideshow" aria-hidden="true">
-      <div className={slideCount === 3 ? 'bento__slideshow-track bento__slideshow-track--three' : 'bento__slideshow-track'}>
-        {slides.map((src, index) => (
+      <div className="bento__slideshow-track">
+        {[...slides, slides[0]].map((src, index) => (
           <div className="bento__slide" key={src + '-' + index}>
             <img src={src} alt="" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
           </div>
@@ -90,14 +89,14 @@ function AutoSlideshow({ slides, slideCount }: { slides: string[]; slideCount: 3
 export default function HomeBento() {
   return (
     <nav className="bento bento--home" aria-label="Explore the portfolio">
-      {CARDS.map(({ to, title, desc, slides, Icon, slideCount }) => (
+      {CARDS.map(({ to, title, desc, slides, Icon }) => (
         <Link key={to} to={to} className="bento__card bento__card--home">
           <span className="bento__home-top">
             <span className="bento__home-icon" aria-hidden="true"><Icon size={24} weight="duotone" /></span>
             <span className="bento__home-title">{title}</span>
           </span>
 
-          <AutoSlideshow slides={slides} slideCount={slideCount} />
+          <AutoSlideshow slides={slides} />
 
           <span className="bento__desc">{desc}</span>
         </Link>
