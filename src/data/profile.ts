@@ -44,7 +44,7 @@ export const profile: Profile = {
   displayName: { line1: 'Video that flows.', line2: 'Stories that connect.' },
   hero: {
     body: 'I edit podcasts, YouTube videos, social content, gaming montages, and narrative projects with a focus on rhythm, clean transitions, sound, and cinematic flow.',
-    portraitSrc: '/profile-slideshow.svg',
+    portraitSrc: '/profile-avatar.svg',
     portraitAlt: 'Joeflor Hinobiada',
   },
   socials: [
