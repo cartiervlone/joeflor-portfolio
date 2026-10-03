@@ -6,6 +6,7 @@ type Project = {
   type: string
   description: string
   videoId: string
+  thumbnail: string
 }
 
 const YOUTUBE_PROJECTS: Project[] = [
@@ -15,6 +16,7 @@ const YOUTUBE_PROJECTS: Project[] = [
     type: 'Personal Work',
     description: 'A personal gaming montage focused on music sync, timing, motion, effects, and cinematic pacing.',
     videoId: 'OT6A2AwJSNQ',
+    thumbnail: 'https://res.cloudinary.com/wsshir2f/image/upload/v1791007207/METRO_777.png',
   },
   {
     index: '02',
@@ -22,6 +24,7 @@ const YOUTUBE_PROJECTS: Project[] = [
     type: 'Personal Work',
     description: 'Gaming montage work built around rhythm, gameplay highlights, transitions, and visual energy.',
     videoId: 'hmMa4F01CUI',
+    thumbnail: 'https://res.cloudinary.com/wsshir2f/image/upload/v1791007207/Wutitdo.png',
   },
   {
     index: '03',
@@ -29,6 +32,7 @@ const YOUTUBE_PROJECTS: Project[] = [
     type: 'Personal Work',
     description: 'A gameplay edit showcasing fast cuts, timing, effects, and music-driven visual flow.',
     videoId: 'BlgqEU2CyBM',
+    thumbnail: 'https://res.cloudinary.com/wsshir2f/image/upload/v1791007207/IMRP.png',
   },
   {
     index: '04',
@@ -36,6 +40,7 @@ const YOUTUBE_PROJECTS: Project[] = [
     type: 'Personal Work',
     description: 'Another personal montage demonstrating pacing, sound sync, visual emphasis, and cinematic editing.',
     videoId: '5KH3tDAdIso',
+    thumbnail: 'https://res.cloudinary.com/wsshir2f/image/upload/v1791007205/COMRP.png',
   },
 ]
 
@@ -52,7 +57,7 @@ function ProjectCard({ project }: { project: Project }) {
         </a>
       </div>
       <div className="bento__media bento__reel pgrid__video">
-        <img src={`https://i.ytimg.com/vi/${p.videoId}/hqdefault.jpg`} alt={`${p.title} YouTube thumbnail`} loading="lazy" />
+        <img src={p.thumbnail} alt={`${p.title} YouTube thumbnail`} loading="lazy" decoding="async" />
         <span className="pgrid__play" aria-hidden="true">▶</span>
       </div>
       <div className="pgrid__card-copy">
