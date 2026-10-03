@@ -503,13 +503,8 @@
   display: flex;
   width: 500%;
   height: 100%;
-  animation: bento-home-slide 16s infinite;
+  animation: bento-home-slide 16s linear infinite;
   will-change: transform;
-}
-
-.bento__slideshow-track--three {
-  width: 400%;
-  animation-name: bento-home-slide-three;
 }
 
 .bento__slide {
@@ -517,11 +512,6 @@
   width: 20%;
   height: 100%;
   overflow: hidden;
-}
-
-.bento__slideshow-track--three .bento__slide {
-  flex-basis: 25%;
-  width: 25%;
 }
 
 .bento__slide img {
@@ -532,18 +522,11 @@
 }
 
 @keyframes bento-home-slide {
-  0%, 18% { transform: translateX(0); }
-  23%, 43% { transform: translateX(-20%); }
-  48%, 68% { transform: translateX(-40%); }
-  73%, 93% { transform: translateX(-60%); }
-  98%, 100% { transform: translateX(-80%); }
-}
-
-@keyframes bento-home-slide-three {
   0%, 20% { transform: translateX(0); }
-  26%, 46% { transform: translateX(-25%); }
-  52%, 72% { transform: translateX(-50%); }
-  78%, 100% { transform: translateX(-75%); }
+  25%, 45% { transform: translateX(-20%); }
+  50%, 70% { transform: translateX(-40%); }
+  75%, 95% { transform: translateX(-60%); }
+  100% { transform: translateX(-80%); }
 }
 
 @media (max-width: 1099px) {
