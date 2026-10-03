@@ -85,7 +85,7 @@ function Folder({progress}:{progress:number}) {
       <div className="svc-folder-pages" aria-label="Services and editing workflow">
         {SERVICES.map(({title,icon:Icon,body,out},index)=> {
 
-          return <article className="svc-page svc-page--service" key={title} style={pageStyle}>
+          return <article className="svc-page svc-page--service" key={title} style={pageStyle(index)}>
             <div className="svc-page-topline"><span>WHAT I OFFER</span><i>{String(index+1).padStart(2,'0')}</i></div>
             <h2>{title}.</h2>
             <div className="svc-service-focus">
