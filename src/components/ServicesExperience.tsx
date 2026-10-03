@@ -15,7 +15,7 @@ const TOOLS = [
   ['DaVinci Resolve','davinciresolve','Color grading · Cutting · Fusion / 3D effects'],
   ['Premiere Pro','adobepremierepro','Multicam · Editing · Audio · Captions'],
   ['After Effects','adobeaftereffects','Motion graphics · Compositing · Visual effects'],
-  ['CapCut','capcut','Short-form edits · Captions · Social content'],
+  ['CapCut','capcut','Auto captions · Templates · Quick social edits'],
   ['Photoshop','adobephotoshop','Thumbnails · Image cleanup · Graphic assets'],
 ] as const
 
