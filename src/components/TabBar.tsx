@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useLayoutEffect, useRef } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useRef, type MouseEvent } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import { House, FolderOpen, EnvelopeSimple, Stack, User } from '@/components/slab'
 import { motionReduced } from '@/lib/a11y'
@@ -141,6 +141,13 @@ export default function TabBar() {
       <span className="tabbar__pill" ref={pillRef} aria-hidden="true" data-off="" />
       {TABS.map(({ label, to, Icon, ...rest }) => {
         const primary = 'primary' in rest && rest.primary
+        const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
+          if (to === '/' && pathname === '/') {
+            e.preventDefault()
+            window.scrollTo({ top: 0, behavior: 'smooth' })
+          }
+        }
+
         return (
           <NavLink
             key={to}
@@ -148,6 +155,7 @@ export default function TabBar() {
             end={to === '/'}
             className={`tabbar__tab${primary ? ' tabbar__tab--primary' : ''}`}
             aria-label={primary ? label : undefined}
+            onClick={handleClick}
           >
             {/* Outline at rest, filled when selected - the iOS tab convention. */}
             {({ isActive }) =>
