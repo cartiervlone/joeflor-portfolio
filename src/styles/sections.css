@@ -3460,3 +3460,31 @@ html.has-notice .nav { top: 62px; }
 @media (max-width: 480px) {
   html.has-notice .nav { top: 78px; }
 }
+
+/* ==========================================================================
+   DARK-MODE LIGHT-GRADIENT CLEANUP
+   UI surfaces that were designed as cream/white gradients in the light theme
+   must not become washed-out panels in dark mode. Image/content overlays that
+   intentionally darken media are preserved.
+   ========================================================================== */
+[data-theme='dark'] .funnels__modal-bar,
+[data-theme='dark'] .app-card__img-wrap {
+  background: var(--paper) !important;
+  background-image: none !important;
+  border-color: var(--line-strong) !important;
+  color: var(--navy) !important;
+}
+
+[data-theme='dark'] .app-card__img-fade {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(32, 38, 52, 0.82)
+  ) !important;
+}
+
+[data-theme='dark'] .app-card__img-placeholder {
+  background: color-mix(in srgb, var(--orange) 10%, var(--paper)) !important;
+  background-image: none !important;
+}
+
