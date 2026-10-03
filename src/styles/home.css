@@ -330,4 +330,4 @@
 .home__section .pgrid {
   padding-left: 0;
   padding-right: 0;
-}
+}\n/* Dark mode: keep the main Home sheets flat and dark; do not reuse the light-theme white/blue gradient. */\n[data-theme='dark'] .home__glass {\n  background: var(--paper) !important;\n  background-image: none !important;\n  box-shadow: var(--neo-raised) !important;\n  border-color: var(--line-strong) !important;\n}\n
