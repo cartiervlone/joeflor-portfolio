@@ -104,7 +104,7 @@ export default function AboutGrid() {
           <div className="agrid__portrait-shell">
             <div className="agrid__portrait-stage" aria-label="Joeflor Hinobiada photo slideshow">
               <div className="agrid__portrait-track">
-                {ABOUT_PHOTOS.map((photo, index) => (
+                {[...ABOUT_PHOTOS, ...ABOUT_PHOTOS].map((photo, index) => (
                   <div className="agrid__portrait-slide" key={photo.src}>
                     <img
                       className="agrid__portrait-image"
