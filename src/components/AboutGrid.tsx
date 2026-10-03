@@ -1,12 +1,5 @@
 import { MapPin } from '@/components/slab'
-import { useEffect, useState } from 'react'
 import { profile } from '@/data/profile'
-
-const ABOUT_PHOTOS = [
-  { src: '/profile-slideshow.svg', alt: 'Joeflor Hinobiada in a black shirt outdoors' },
-  { src: '/profile-slideshow.svg', alt: 'Joeflor Hinobiada in a mirror photo' },
-  { src: '/profile-slideshow.svg', alt: 'Joeflor Hinobiada in a shop' },
-]
 
 const CAPABILITIES: Array<[string, string]> = [
   ['01', 'Gaming Montage Editing'],
@@ -15,16 +8,7 @@ const CAPABILITIES: Array<[string, string]> = [
   ['04', 'Film & Cinematic Editing'],
 ]
 
-export default function AboutGrid() {
-  const [photoIndex, setPhotoIndex] = useState(0)
-
-  useEffect(() => {
-    const timer = window.setInterval(() => {
-      setPhotoIndex((index) => (index + 1) % ABOUT_PHOTOS.length)
-    }, 4200)
-    return () => window.clearInterval(timer)
-  }, [])
-  return (
+export default function AboutGrid() {  return (
     <section className="pgrid agrid" aria-labelledby="about-title">
       <header className="pgrid__head">
         <span className="pgrid__eyebrow">About</span>
@@ -100,10 +84,7 @@ export default function AboutGrid() {
           </div>
         </div>
 
-        <div className="agrid__portrait">
-          <img src={profile.hero.portraitSrc} alt={profile.hero.portraitAlt} loading="eager" decoding="async" width={400} height={400} />
-        </div>
-      </div>
+        <div className="agrid__portrait">\n          <div className="agrid__portrait-shell">\n            <div className="agrid__portrait-stage">\n              <img\n                className="agrid__portrait-image"\n                src="/profile-slideshow.svg"\n                alt="Joeflor Hinobiada photo slideshow"\n                loading="eager"\n                decoding="async"\n                width={400}\n                height={600}\n              />\n            </div>\n            <span className="agrid__portrait-label">About Me</span>\n          </div>\n        </div>    </div>
     </section>
   )
 }
