@@ -320,15 +320,15 @@
 /* ---------- Cloudinary photo slideshow ---------- */
 .agrid__portrait-track {
   display: flex;
-  width: 300%;
+  width: 600%;
   height: 100%;
-  animation: agrid-photo-slide 15s infinite;
+  animation: agrid-photo-slide 15s linear infinite;
   will-change: transform;
 }
 
 .agrid__portrait-slide {
-  flex: 0 0 33.333333%;
-  width: 33.333333%;
+  flex: 0 0 16.666667%;
+  width: 16.666667%;
   height: 100%;
   min-width: 0;
   overflow: hidden;
@@ -343,10 +343,8 @@
 }
 
 @keyframes agrid-photo-slide {
-  0%, 27% { transform: translateX(0); }
-  33%, 60% { transform: translateX(-33.333333%); }
-  66%, 93% { transform: translateX(-66.666667%); }
-  100% { transform: translateX(0); }
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 @media (prefers-reduced-motion: reduce) {
