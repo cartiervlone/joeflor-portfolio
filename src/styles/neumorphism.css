@@ -356,3 +356,185 @@ select,
     8px 8px 18px var(--neo-dark),
     -5px -5px 12px rgba(58,68,88,.40) !important;
 }
+
+
+/* ---------- Final dark-mode contrast pass ----------
+   Keep every interactive surface and its label readable in dark mode.
+   Component styles can contain older light-theme declarations, so these
+   theme-scoped rules are intentionally last in the cascade. */
+[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+/* Core text + surfaces */
+[data-theme='dark'] body,
+[data-theme='dark'] .shell,
+[data-theme='dark'] .shell__panel {
+  background: var(--cream);
+  color: var(--navy);
+}
+
+[data-theme='dark'] .home__glass,
+[data-theme='dark'] .pgrid__glass,
+[data-theme='dark'] .sgrid__glass,
+[data-theme='dark'] .tgrid__glass,
+[data-theme='dark'] .agrid__glass,
+[data-theme='dark'] .cgrid__glass,
+[data-theme='dark'] .bento__card {
+  color: var(--navy);
+}
+
+/* Buttons, pills, tabs and segmented controls: never allow light text to
+   disappear on a light-looking dark-mode control. */
+[data-theme='dark'] .home__cta,
+[data-theme='dark'] .rail__social,
+[data-theme='dark'] .rail__theme,
+[data-theme='dark'] .nav__theme,
+[data-theme='dark'] .rail__link,
+[data-theme='dark'] .bento__chip,
+[data-theme='dark'] .pgrid__video-link,
+[data-theme='dark'] .ppanel__ext,
+[data-theme='dark'] .ppanel__tab,
+[data-theme='dark'] .tgrid__pick,
+[data-theme='dark'] .cgrid__again {
+  color: var(--navy) !important;
+  background: var(--paper) !important;
+}
+
+[data-theme='dark'] .rail__link.active {
+  color: var(--navy) !important;
+  background: var(--paper) !important;
+  box-shadow: var(--neo-pressed) !important;
+}
+
+[data-theme='dark'] .tgrid__pick.is-active {
+  color: var(--navy) !important;
+  background: var(--white) !important;
+}
+
+[data-theme='dark'] .ppanel__tab[aria-selected='true'] {
+  color: var(--cream) !important;
+  background: var(--navy) !important;
+}
+
+/* Primary actions deliberately use the accent, with dark ink for contrast. */
+[data-theme='dark'] .cgrid__submit,
+[data-theme='dark'] .ktools .flagship__cta {
+  color: #07101D !important;
+  background: var(--orange) !important;
+}
+
+[data-theme='dark'] .cgrid__submit svg,
+[data-theme='dark'] .ktools .flagship__cta svg,
+[data-theme='dark'] .ktools .flagship__tab.is-active,
+[data-theme='dark'] .ktools .flagship__tab.is-active .flagship__tab-icon {
+  color: #07101D !important;
+}
+
+/* Service method and its nested chips/stages. */
+[data-theme='dark'] .sgrid__method {
+  background: var(--panel-dark) !important;
+  color: var(--navy) !important;
+}
+
+[data-theme='dark'] .sgrid__stage,
+[data-theme='dark'] .sgrid__stage-chip,
+[data-theme='dark'] .sgrid__chip {
+  color: var(--navy) !important;
+}
+
+[data-theme='dark'] .sgrid__stage-icon {
+  color: var(--navy) !important;
+}
+
+/* Testimonials: active picker and cover controls remain readable. */
+[data-theme='dark'] .tgrid__cover {
+  color: #fff !important;
+}
+
+[data-theme='dark'] .tgrid__cover-play {
+  color: #07101D !important;
+}
+
+[data-theme='dark'] .tgrid__picker {
+  background: var(--paper) !important;
+}
+
+[data-theme='dark'] .tgrid__pick:hover {
+  color: var(--navy) !important;
+  background: var(--tint) !important;
+}
+
+/* Contact form fields and status states. */
+[data-theme='dark'] .cgrid__field input,
+[data-theme='dark'] .cgrid__field textarea,
+[data-theme='dark'] .cgrid__input,
+[data-theme='dark'] .cgrid__textarea {
+  color: var(--navy) !important;
+  background: var(--white) !important;
+}
+
+[data-theme='dark'] .cgrid__field input::placeholder,
+[data-theme='dark'] .cgrid__field textarea::placeholder {
+  color: var(--muted) !important;
+}
+
+[data-theme='dark'] .cgrid__done-mark {
+  color: var(--orange) !important;
+  background: color-mix(in srgb, var(--orange) 14%, transparent) !important;
+}
+
+/* Project/browser mock controls. */
+[data-theme='dark'] .pgrid__video-link {
+  color: var(--navy) !important;
+  background: var(--paper) !important;
+}
+
+[data-theme='dark'] .pgrid__play {
+  color: #fff !important;
+  background: rgba(20,24,35,.88) !important;
+}
+
+[data-theme='dark'] .pmodal__close {
+  color: #fff !important;
+}
+
+/* About cards and image marks. */
+[data-theme='dark'] .agrid__cell-mark--img {
+  background: var(--paper) !important;
+}
+
+[data-theme='dark'] .agrid__cell-mark--plain {
+  background: transparent !important;
+}
+
+/* Keep the external-brand/logo plate intentionally light, but keep any
+   surrounding text in the site's dark-mode ink. */
+[data-theme='dark'] .tgrid__brands-chip {
+  color: var(--plate-ink) !important;
+}
+
+/* Prevent common legacy white text declarations from leaking onto ordinary
+   light surfaces in dark mode. */
+[data-theme='dark'] .bento__title,
+[data-theme='dark'] .bento__desc,
+[data-theme='dark'] .pgrid__title,
+[data-theme='dark'] .pgrid__lede,
+[data-theme='dark'] .pgrid__section-title,
+[data-theme='dark'] .pgrid__section-note,
+[data-theme='dark'] .sgrid__offers-title,
+[data-theme='dark'] .sgrid__offers-sub,
+[data-theme='dark'] .agrid__lead,
+[data-theme='dark'] .agrid__note,
+[data-theme='dark'] .cgrid__hint {
+  color: var(--navy);
+}
+
+[data-theme='dark'] .bento__desc,
+[data-theme='dark'] .pgrid__lede,
+[data-theme='dark'] .pgrid__section-note,
+[data-theme='dark'] .sgrid__offers-sub,
+[data-theme='dark'] .agrid__lead span,
+[data-theme='dark'] .cgrid__hint {
+  color: var(--muted);
+}
