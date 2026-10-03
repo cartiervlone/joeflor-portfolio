@@ -414,4 +414,4 @@
   .cgrid__social img { width: 18px; height: 18px; }
   .cgrid__label, .cgrid__step-index { font-size: 12px; }
   .cgrid__hint { font-size: 12.5px; }
-}
+}\n/* Dark mode: the contact aside is a surface, not a light radial-gradient panel. */\n[data-theme='dark'] .cgrid__aside {\n  background: var(--paper) !important;\n  background-image: none !important;\n  box-shadow: var(--neo-raised) !important;\n  border-color: var(--line-strong) !important;\n}\n
