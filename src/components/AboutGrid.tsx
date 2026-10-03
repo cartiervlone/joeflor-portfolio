@@ -1,5 +1,12 @@
 import { MapPin } from '@/components/slab'
+import { useEffect, useState } from 'react'
 import { profile } from '@/data/profile'
+
+const ABOUT_PHOTOS = [
+  { src: '/profile-slideshow.svg', alt: 'Joeflor Hinobiada in a black shirt outdoors' },
+  { src: '/profile-slideshow.svg', alt: 'Joeflor Hinobiada in a mirror photo' },
+  { src: '/profile-slideshow.svg', alt: 'Joeflor Hinobiada in a shop' },
+]
 
 const CAPABILITIES: Array<[string, string]> = [
   ['01', 'Gaming Montage Editing'],
@@ -9,6 +16,14 @@ const CAPABILITIES: Array<[string, string]> = [
 ]
 
 export default function AboutGrid() {
+  const [photoIndex, setPhotoIndex] = useState(0)
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setPhotoIndex((index) => (index + 1) % ABOUT_PHOTOS.length)
+    }, 4200)
+    return () => window.clearInterval(timer)
+  }, [])
   return (
     <section className="pgrid agrid" aria-labelledby="about-title">
       <header className="pgrid__head">
