@@ -125,7 +125,7 @@ function Folder({progress}:{progress:number}) {
         <article className="svc-page svc-page--tools" style={pageStyle(7)}>
           <div className="svc-page-topline"><span>TOOLS I WORK WITH</span><i>TOOLS</i></div>
           <div className="svc-tools-heading"><span><Toolbox size={27} weight="duotone"/></span><div><label>THE TOOLKIT</label><h2>My editing tools.</h2></div></div>
-          <div className="svc-tools">{TOOLS.map(([name,slug])=><div className="svc-tool" tabIndex={0} data-tooltip={name} aria-label={name} key={name}><span><ToolLogo slug={slug} name={name}/></span></div>)}</div>
+          <div className="svc-tools">{TOOLS.map(([name,slug])=><div className="svc-tool" tabIndex={0} data-tooltip={name} aria-label={name} key={name}><span className="svc-tool-logo"><ToolLogo slug={slug} name={name}/></span><b className="svc-tool-name">{name}</b></div>)}</div>
           <p className="svc-tool-hint">Hover or focus a logo to see its name.</p>
         </article>
       </div>
