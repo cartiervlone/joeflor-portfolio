@@ -60,6 +60,13 @@ function Folder({progress}:{progress:number}) {
   const lift=smooth((progress-.14)/.26)
   const open=smooth((progress-.34)/.18)
   const pageProgress=clamp((progress-.53)/.38)
+  const pagePosition=pageProgress*7
+  const pageStyle=(index:number)=>{
+    const position=pagePosition-index
+    const distance=Math.abs(position)
+    const active=clamp(1-distance)
+    return { opacity:.05+active*.95, transform:'translate3d('+(-position*24)+'px,'+(distance*10)+'px,'+(-distance*18)+'px) rotateY('+(position*10)+'deg) scale('+(0.96+active*.04)+')', zIndex:Math.round(active*100) }
+  }
   const done=smooth((progress-.92)/.08)
 
   const folderStyle={
@@ -77,15 +84,7 @@ function Folder({progress}:{progress:number}) {
 
       <div className="svc-folder-pages" aria-label="Services and editing workflow">
         {SERVICES.map(({title,icon:Icon,body,out},index)=> {
-          const position=pageProgress*(SERVICES.length-1)-index
-          const distance=Math.abs(position)
-          const active=clamp(1-distance)
-          const incoming=smooth(clamp(position+.15))
-          const pageStyle={
-            opacity:.06+active*.94,
-            transform:'translate3d('+(-position*24)+'px,'+(distance*10)+'px,'+(-distance*18)+'px) rotateY('+(position*10)+'deg) scale('+(0.96+active*.04)+')',
-            zIndex:Math.round(active*100)
-          }
+
           return <article className="svc-page svc-page--service" key={title} style={pageStyle}>
             <div className="svc-page-topline"><span>WHAT I OFFER</span><i>{String(index+1).padStart(2,'0')}</i></div>
             <h2>{title}.</h2>
@@ -99,7 +98,7 @@ function Folder({progress}:{progress:number}) {
           </article>
         })}
 
-        <article className="svc-page svc-page--role" style={{opacity:smooth((pageProgress-.98)/.02)}}>
+        <article className="svc-page svc-page--role" style={pageStyle(4)}>
           <div className="svc-page-topline"><span>CURRENT ROLE</span><i>NOW</i></div>
           <span className="svc-kicker">CURRENTLY</span>
           <h2>Podcast Video Editor.</h2>
@@ -109,21 +108,21 @@ function Folder({progress}:{progress:number}) {
           <div className="svc-origin"><GameController size={16} weight="duotone"/><span><b>ORIGIN</b> Gaming montage editing.</span></div>
         </article>
 
-        <article className="svc-page svc-page--work" style={{opacity:smooth((pageProgress-1.02)/.02)}}>
+        <article className="svc-page svc-page--work" style={pageStyle(5)}>
           <div className="svc-page-topline"><span>WHAT I ACTUALLY DO</span><i>WORK</i></div>
           <h2>From raw footage to a finished cut.</h2>
           <div className="svc-demo-grid"><div className="svc-demo"><small>MULTICAM / SPLIT-CAM</small><div className="svc-cams"><i>HOST</i><i>GUEST</i><i>HOST + GUEST</i></div></div><div className="svc-demo"><small>AUDIO</small><div className="svc-wave">{Array.from({length:10},(_,i)=><i key={i}/>)}</div><label>RAW → RX CLEANUP → FINAL</label></div></div>
           <p className="svc-tags">Cutting · Pacing · B-roll · Transitions · Captions · Music · SFX · Color · Dialogue cleanup</p>
         </article>
 
-        <article className="svc-page svc-page--language" style={{opacity:smooth((pageProgress-1.06)/.02)}}>
+        <article className="svc-page svc-page--language" style={pageStyle(6)}>
           <div className="svc-page-topline"><span>EDITING LANGUAGE</span><i>FLOW</i></div>
           <h2>Make every part feel intentional.</h2>
           <div className="svc-specialties">{SPECIALTIES.map(x=><span key={x}>{x}</span>)}</div>
           <div className="svc-principle"><Sparkle size={16} weight="duotone"/>Effects should serve the moment — never the other way around.</div>
         </article>
 
-        <article className="svc-page svc-page--tools" style={{opacity:smooth((pageProgress-1.1)/.02)}}>
+        <article className="svc-page svc-page--tools" style={pageStyle(7)}>
           <div className="svc-page-topline"><span>TOOLS I WORK WITH</span><i>TOOLS</i></div>
           <div className="svc-tools-heading"><span><Toolbox size={27} weight="duotone"/></span><div><label>THE TOOLKIT</label><h2>My editing tools.</h2></div></div>
           <div className="svc-tools">{TOOLS.map(([name,slug])=><div className="svc-tool" tabIndex={0} data-tooltip={name} aria-label={name} key={name}><span><ToolLogo slug={slug} name={name}/></span></div>)}</div>
