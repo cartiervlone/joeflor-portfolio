@@ -20,9 +20,6 @@ const ThankYou = lazy(() => import('@/components/ThankYou'))
 import './styles/tokens.css'
 import './styles/global.css'
 import './styles/theme-glyph.css'
-// The legacy section sheets first, then the shell. The redesign overrides them
-// (the floating nav pill hiding behind the rail, the compact workflow), and
-// equal-specificity rules are decided by source order.
 import './styles/sections.css'
 import './styles/extensions.css'
 import './styles/ai-stack.css'
@@ -41,16 +38,12 @@ import './styles/credentials.css'
 import './styles/testimonials.css'
 import './styles/mobile-app.css'
 import './styles/a11y.css'
-// Apple design pass - an overlay on everything above; perf.css still wins.
 import './styles/apple.css'
-// Mobile motion + component pass on top of it (phone shell only).
 import './styles/mobile-pass.css'
-// Last: the perf tiers only ever turn things OFF, so they must win.
 import './styles/neumorphism.css'
+import './styles/services-experience.css'
 import './styles/perf.css'
 
-// Re-apply this tab's performance verdict before the first paint, so a
-// downgraded visitor never sees the expensive layers flash back on reload.
 restorePerfTier()
 restorePrefs()
 
@@ -61,8 +54,6 @@ createRoot(container).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        {/* The shell owns the rail, the shader and the intro; each child
-            renders into its one scrolling panel. */}
         <Route element={<App />}>
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<ProjectsView />} />
@@ -72,7 +63,6 @@ createRoot(container).render(
           <Route path="/about" element={<AboutGrid />} />
           <Route path="/contact" element={<ContactGrid />} />
         </Route>
-        {/* Standalone pages: their own layout, no rail, document scroll. */}
         <Route path="/privacy" element={<Suspense fallback={null}><Privacy /></Suspense>} />
         <Route path="/terms" element={<Suspense fallback={null}><ToS /></Suspense>} />
         <Route path="/thank-you" element={<Suspense fallback={null}><ThankYou /></Suspense>} />
