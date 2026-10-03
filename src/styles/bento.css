@@ -540,6 +540,13 @@
   100% { transform: translateX(-80%); }
 }
 
+@keyframes bento-home-slide-three {
+  0%, 25% { transform: translateX(0); }
+  33.333%, 58.333% { transform: translateX(-25%); }
+  66.666%, 91.666% { transform: translateX(-50%); }
+  100% { transform: translateX(-75%); }
+}
+
 @media (max-width: 1099px) {
   .bento--home {
     grid-template-columns: repeat(2, minmax(0, 1fr));
