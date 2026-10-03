@@ -96,9 +96,7 @@ export default function AboutGrid() {  return (
                 width={400}
                 height={600}
               />
-            </div>
-            <span className="agrid__portrait-label">About Me</span>
-          </div>
+            </div></div>
         </div>    </div>
     </section>
   )
