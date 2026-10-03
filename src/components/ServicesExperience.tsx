@@ -72,7 +72,7 @@ function Beyond(){ return <section className="svc-beyond"><div className="svc-fo
 function Workflow(){ return <section className="svc-workflow"><div className="svc-section-label"><span>07</span><b>FROM FOOTAGE TO FINAL</b></div><div className="svc-workflow-head"><div><small>WORKING TOGETHER</small><h2>A clear path from brief to delivery.</h2></div><p>The same intention carries through the client experience: understand the project, build the edit, refine the details, and deliver the finished piece.</p></div><ol>{STEPS.map(([n,t,b])=><li key={n}><span>{n}</span><strong>{t}</strong><p>{b}</p></li>)}</ol></section> }
 
 export default function ServicesExperience(){
-  const sceneRef=useRef<HTMLDivElement>(null), beyondRef=useRef<HTMLElement>(null), progress=useProgress(sceneRef)
+  const sceneRef=useRef<HTMLDivElement>(null), beyondRef=useRef<HTMLDivElement>(null), progress=useProgress(sceneRef)
   const [hint,setHint]=useState(true)
   useEffect(()=>{const s=document.getElementById(SCROLLER_ID); if(!s)return; const f=()=>setHint(s.scrollTop<80); f(); s.addEventListener('scroll',f,{passive:true}); return()=>s.removeEventListener('scroll',f)},[])
   const jump=()=>beyondRef.current?.scrollIntoView({behavior:'smooth',block:'start'})
