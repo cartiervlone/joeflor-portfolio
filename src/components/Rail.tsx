@@ -13,6 +13,7 @@ import {
 } from './RailIcons'
 import { getTheme, toggleTheme, type Theme } from '@/lib/theme'
 import { profile } from '@/data/profile'
+import { SCROLLER_ID } from '@/hooks/useLenis'
 
 /**
  * The profile rail: the fixed left column of the shell. It carries identity,
@@ -110,7 +111,17 @@ export default function Rail() {
               const isHome = to === '/'
 
               const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
+                const scroller = document.getElementById(SCROLLER_ID)
+
+                if (isHome && location.pathname === '/') {
+                  e.preventDefault()
+                  scroller?.scrollTo({ top: 0, behavior: 'smooth' })
+                  window.history.replaceState(null, '', '/')
+                  return
+                }
+
                 if (!sectionId || location.pathname !== '/') return
+
                 e.preventDefault()
                 document.getElementById(sectionId)?.scrollIntoView({
                   behavior: 'smooth',
@@ -122,7 +133,7 @@ export default function Rail() {
               return (
                 <li key={to}>
                   <NavLink
-                    to={sectionId ? `/#${sectionId}` : to}
+                    to={location.pathname === '/' && sectionId ? `/#${sectionId}` : to}
                     end={isHome}
                     className="rail__link"
                     onClick={handleClick}
