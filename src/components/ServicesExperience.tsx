@@ -71,7 +71,9 @@ function Folder({progress}:{progress:number}) {
     // The page currently being revealed stays crystal sharp. Pages underneath
     // it remain visibly present through the clear folder, but progressively
     // soften as they move farther away from the active page.
-    const blur=Math.min(13,Math.pow(distance,0.9)*7)
+    const openingBlur=(1-open)*18
+    const depthBlur=Math.pow(distance,0.9)*7
+    const blur=Math.min(22,openingBlur+depthBlur)
     const opacity=.1+active*.9
     const saturation=1-Math.min(.22,distance*.11)
     return {
