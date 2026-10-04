@@ -92,14 +92,14 @@ function TeaserWorkSection() {
       <div className="pgrid__teaser-media">
         <iframe
           src="https://player.cloudinary.com/embed/?cloud_name=wsshir2f&public_id=SR_EP_38_Teaser"
-          title="SR EP 38 Teaser"
+          title="Teaser // 01"
           allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
           allowFullScreen
         />
       </div>
       <div className="pgrid__teaser-copy">
         <span className="pgrid__social-empty-label">16:9 · Landscape</span>
-        <h3>SR EP 38 Teaser</h3>
+        <h3>Teaser // 01</h3>
         <p>Podcast teaser edited for cinematic pacing, music, dialogue, and visual flow.</p>
       </div>
     </div>
