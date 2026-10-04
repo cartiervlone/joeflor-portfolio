@@ -404,7 +404,7 @@
   overflow:clip;
 }
 .svc-folder-wrap{
-  width:min(720px,68vw,calc(82vh * .82));
+  width:min(720px,68vw,calc(90vh * .82));
   height:auto;
   aspect-ratio:.82;
 }
@@ -419,6 +419,6 @@
 
 @media(max-width:639px){
   .svc-folder-wrap{
-    width:min(520px,93vw,calc(78vh * .82));
+    width:min(520px,93vw,calc(88vh * .82));
   }
 }
