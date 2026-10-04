@@ -1,7 +1,6 @@
 import { Suspense, useEffect, useLayoutEffect, useRef } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import TabBar from '@/components/TabBar'
-import QuickMenu from '@/components/QuickMenu'
 import Rail from '@/components/Rail'
 import IntroOverlay from '@/components/IntroOverlay'
 import CursorRing from '@/components/CursorRing'
