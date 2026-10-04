@@ -3,10 +3,10 @@ import { ArrowDown, ArrowRight, Briefcase, FilmSlate, GameController, Microphone
 import { SCROLLER_ID } from '@/hooks/useLenis'
 
 const SERVICES = [
-  { title: 'Podcast Video Editing', icon: Microphone, body: 'Full podcast episodes, teasers, short-form reels, multicam and split-cam editing.', out: 'Full episode · Teaser · 2+ reels' },
-  { title: 'Gaming Montage Editing', icon: GameController, body: 'Music-driven gameplay edits shaped around timing, impact, motion, and cinematic flow.', out: 'Montage · Music sync · Effects' },
-  { title: 'YouTube & Social Editing', icon: YoutubeLogo, body: 'Story-focused edits for long-form videos, social clips, and creator content.', out: 'YouTube · Short-form · Social' },
-  { title: 'Film & Cinematic Editing', icon: FilmSlate, body: 'Narrative cuts built around pacing, atmosphere, composition, and visual intention.', out: 'Narrative · Cinematic · Trailers' },
+  { title: 'Podcast Video Editing', icon: Microphone, body: 'Full podcast episodes, teasers, short-form reels, multicam and split-cam editing.', out: 'Full episode · Teaser · 2+ reels', details: 'Host + guest sync · Dialogue cleanup · B-roll · Captions · Music + SFX' },
+  { title: 'Gaming Montage Editing', icon: GameController, body: 'Music-driven gameplay edits shaped around timing, impact, motion, and cinematic flow.', out: 'Montage · Music sync · Effects', details: 'Beat sync · Impact cuts · Motion effects · Sound design · Cinematic pacing' },
+  { title: 'YouTube & Social Editing', icon: YoutubeLogo, body: 'Story-focused edits for long-form videos, social clips, and creator content.', out: 'YouTube · Short-form · Social', details: 'Hook-first pacing · Captions · B-roll · Retention-focused cuts · Platform-ready exports' },
+  { title: 'Film & Cinematic Editing', icon: FilmSlate, body: 'Narrative cuts built around pacing, atmosphere, composition, and visual intention.', out: 'Narrative · Cinematic · Trailers', details: 'Story structure · Scene pacing · Color · Sound · Transitions · Emotional timing' },
 ] as const
 
 const SPECIALTIES = ['Pacing','Music sync','Dialogue cleanup','Multicam','Split-cam','B-roll','Transitions','Captions','Sound design','Color','Cinematic flow','Storytelling']
@@ -68,7 +68,8 @@ function Folder({progress}:{progress:number}) {
     const position=pagePosition-index
     const distance=Math.abs(position)
     const active=clamp(1-distance)
-    return { opacity:.05+active*.95, transform:'translate3d('+(-position*24)+'px,'+(distance*10)+'px,'+(-distance*18)+'px) rotateY('+(position*10)+'deg) scale('+(0.96+active*.04)+')', zIndex:Math.round(active*100) }
+    const blur=Math.min(10,distance*5)
+    return { opacity:.12+active*.88, filter:'blur('+blur+'px)', transform:'translate3d('+(-position*24)+'px,'+(distance*10)+'px,'+(-distance*18)+'px) rotateY('+(position*10)+'deg) scale('+(0.96+active*.04)+')', zIndex:Math.round(active*100) }
   }
   const done=smooth((progress-.92)/.08)
 
@@ -96,8 +97,9 @@ function Folder({progress}:{progress:number}) {
               <p>{body}</p>
             </div>
             <label>{out}</label>
+            <div className="svc-service-details">{details.split(' · ').map(detail=><span key={detail}>{detail}</span>)}</div>
             <div className="svc-page-progress"><i style={{width:(Math.max(0,Math.min(1,pageProgress-index/(SERVICES.length-1)))*100)+'%'}}/></div>
-            <small className="svc-page-next">{index < SERVICES.length-1 ? 'Keep scrolling' : 'The rest of the folder is coming next'}</small>
+            <small className="svc-page-next">{index < SERVICES.length-1 ? 'Flip to the next page' : 'Keep scrolling for the rest of the folder'}</small>
           </article>
         })}
 
