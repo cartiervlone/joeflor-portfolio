@@ -56,7 +56,9 @@ function useProgress(ref: RefObject<HTMLDivElement | null>) {
 
 function ToolLogo({src,name}:{src:string;name:string}) {
   const cropBottom = name === 'Premiere Pro' || name === 'After Effects' || name === 'Photoshop'
-  return <img className={cropBottom ? 'svc-tool-logo-image svc-tool-logo-image--crop-bottom' : 'svc-tool-logo-image'} src={src} alt={name+' logo'} loading="eager" decoding="async" />
+  const blendWhite = name === 'CapCut'
+  const logoClass = ['svc-tool-logo-image', cropBottom ? 'svc-tool-logo-image--crop-bottom' : '', blendWhite ? 'svc-tool-logo-image--blend-white' : ''].filter(Boolean).join(' ')
+  return <img className={logoClass} src={src} alt={name+' logo'} loading="eager" decoding="async" />
 }
 
 function Folder({progress}:{progress:number}) {
