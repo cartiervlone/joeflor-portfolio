@@ -87,10 +87,13 @@ function Folder({progress}:{progress:number}) {
     }
   }
   const done=smooth((progress-.92)/.08)
+  // After the final page is readable, use the remaining scroll to lift the
+  // folder slightly so its lower/base portion comes into view before handoff.
+  const bottomReveal=smooth((progress-.90)/.10)
 
   const folderStyle={
     opacity:.08+reveal*.92,
-    transform:'translate3d(0,'+(90-lift*90)+'px,0) scale('+(0.82+reveal*.18)+') rotateX('+(3-lift*3)+'deg)'
+    transform:'translate3d(0,calc('+(90-lift*90)+'px - '+(bottomReveal*16)+'vh),0) scale('+(0.82+reveal*.18)+') rotateX('+(3-lift*3)+'deg)'
   }
 
   return <div className="svc-folder-wrap" style={folderStyle}>
