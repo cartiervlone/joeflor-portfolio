@@ -193,6 +193,7 @@
 .svc-tool img{width:44px;height:44px;opacity:1;filter:none;object-fit:contain;display:block}
 .svc-tool-logo-image{display:block;width:44px;height:44px;object-fit:contain;object-position:center center}
 .svc-tool-logo-image--crop-bottom{clip-path:inset(0 0 11% 0);transform:translateY(-2px)}
+.svc-tool-logo-image--blend-white{mix-blend-mode:multiply}
 .svc-tool:after{
   content:attr(data-tooltip);
   position:absolute;left:50%;bottom:10px;
