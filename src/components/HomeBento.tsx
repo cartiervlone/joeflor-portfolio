@@ -40,7 +40,7 @@ const LETS_WORK_SLIDES = [
 const CARDS: HomeCard[] = [
   {
     to: '/projects',
-    title: 'Selected Work',
+    title: 'Projects',
     desc: 'Gaming, podcasts, YouTube, social, and cinematic edits.',
     slides: YOUTUBE_SLIDES,
     Icon: FolderOpen,
