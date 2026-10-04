@@ -47,6 +47,9 @@ export default function App() {
   // the browser only restores scroll on the document.
   useEffect(() => {
     panelRef.current?.scrollTo({ top: 0, behavior: 'auto' })
+    // Lenis owns the desktop panel scroll. Tell it the route content changed
+    // so its cached dimensions and ScrollTrigger measurements are rebuilt.
+    window.dispatchEvent(new Event('portfolio:route-change'))
   }, [pathname])
 
   // From the first route change on, a page that mounts rises into place
@@ -114,9 +117,11 @@ export default function App() {
           className="shell__panel"
           data-fixed={isFixed ? 'true' : 'false'}
         >
-          <Suspense fallback={null}>
-            <Outlet />
-          </Suspense>
+          <div className="shell__content">
+            <Suspense fallback={null}>
+              <Outlet />
+            </Suspense>
+          </div>
         </main>
       </div>
       {phone && <TabBar />}
