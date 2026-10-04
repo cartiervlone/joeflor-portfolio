@@ -55,7 +55,8 @@ function useProgress(ref: RefObject<HTMLDivElement | null>) {
 }
 
 function ToolLogo({src,name}:{src:string;name:string}) {
-  return <img src={src} alt={name+' logo'} loading="eager" decoding="async" />
+  const cropBottom = name === 'Premiere Pro' || name === 'After Effects' || name === 'Photoshop'
+  return <img className={cropBottom ? 'svc-tool-logo-image svc-tool-logo-image--crop-bottom' : 'svc-tool-logo-image'} src={src} alt={name+' logo'} loading="eager" decoding="async" />
 }
 
 function Folder({progress}:{progress:number}) {
