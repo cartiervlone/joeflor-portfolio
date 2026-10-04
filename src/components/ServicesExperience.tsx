@@ -62,7 +62,10 @@ function Folder({progress}:{progress:number}) {
   const reveal=smooth((progress-.04)/.22)
   const lift=smooth((progress-.14)/.26)
   const open=smooth((progress-.34)/.18)
-  const pageProgress=clamp((progress-.53)/.47)
+  // Finish revealing the folder pages slightly before the scene ends.
+  // The extra scroll room lets the fully opened folder breathe at the bottom
+  // instead of handing off immediately to the next section.
+  const pageProgress=clamp((progress-.50)/.40)
   const pagePosition=pageProgress*7
   const pageStyle=(index:number)=>{
     const position=pagePosition-index
