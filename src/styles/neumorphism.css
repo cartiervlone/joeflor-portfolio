@@ -39,14 +39,19 @@
 }
 
 body {
-  background: var(--cream);
+  background:
+    radial-gradient(ellipse at 50% 18%, rgba(167,205,242,.22) 0%, rgba(167,205,242,.08) 24%, transparent 52%),
+    radial-gradient(ellipse at 12% 70%, rgba(121,165,218,.12) 0%, transparent 38%),
+    radial-gradient(ellipse at 88% 28%, rgba(170,146,255,.13) 0%, transparent 36%),
+    linear-gradient(135deg, #E4EAF3 0%, #DFE7F2 48%, #E9ECF5 100%);
+  background-attachment: fixed;
 }
 
-/* Keep the existing animated contour background subtle so the interface,
-   rather than the shader, carries the visual identity. */
+/* The Services page atmosphere is now the site's shared background language.
+   Keep it completely static: no contour shader, particles, arrows, or moving
+   background decoration. UI transitions still work normally. */
 .hero-canvas {
-  opacity: .22;
-  background: var(--cream);
+  display: none !important;
 }
 
 /* Main raised sheet. */
@@ -216,11 +221,12 @@ select,
 
 /* ---------- Dark-mode neumorphism refinements ---------- */
 [data-theme='dark'] body {
-  background: var(--cream);
-}
-
-[data-theme='dark'] .hero-canvas {
-  background: var(--cream);
+  background:
+    radial-gradient(ellipse at 50% 18%, rgba(78,124,169,.18) 0%, rgba(78,124,169,.06) 25%, transparent 54%),
+    radial-gradient(ellipse at 14% 72%, rgba(76,121,169,.12) 0%, transparent 38%),
+    radial-gradient(ellipse at 86% 28%, rgba(143,124,246,.10) 0%, transparent 38%),
+    linear-gradient(135deg, #1B2433 0%, #202B3B 52%, #202634 100%);
+  background-attachment: fixed;
 }
 
 [data-theme='dark'] .bento__card,
