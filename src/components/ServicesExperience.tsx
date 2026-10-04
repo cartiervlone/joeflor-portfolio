@@ -68,8 +68,18 @@ function Folder({progress}:{progress:number}) {
     const position=pagePosition-index
     const distance=Math.abs(position)
     const active=clamp(1-distance)
-    const blur=Math.min(10,distance*5)
-    return { opacity:.12+active*.88, filter:'blur('+blur+'px)', transform:'translate3d('+(-position*24)+'px,'+(distance*10)+'px,'+(-distance*18)+'px) rotateY('+(position*10)+'deg) scale('+(0.96+active*.04)+')', zIndex:Math.round(active*100) }
+    // The page currently being revealed stays crystal sharp. Pages underneath
+    // it remain visibly present through the clear folder, but progressively
+    // soften as they move farther away from the active page.
+    const blur=Math.min(13,Math.pow(distance,0.9)*7)
+    const opacity=.1+active*.9
+    const saturation=1-Math.min(.22,distance*.11)
+    return {
+      opacity,
+      filter:'blur('+blur+'px) saturate('+saturation+')',
+      transform:'translate3d('+(-position*24)+'px,'+(distance*10)+'px,'+(-distance*18)+'px) rotateY('+(position*10)+'deg) scale('+(0.96+active*.04)+')',
+      zIndex:Math.round(active*100),
+    }
   }
   const done=smooth((progress-.92)/.08)
 
