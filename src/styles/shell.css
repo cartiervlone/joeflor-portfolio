@@ -17,6 +17,11 @@
    ============================================ */
 .shell {
   display: block;
+  background: transparent;
+}
+
+.shell__panel {
+  background: transparent;
 }
 
 .shell__panel {
