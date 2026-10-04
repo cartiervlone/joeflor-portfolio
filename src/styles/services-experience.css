@@ -191,6 +191,8 @@
   box-shadow:9px 10px 18px rgba(71,104,141,.18),-8px -8px 18px rgba(255,255,255,.72),inset 0 1px 0 rgba(255,255,255,.88);
 }
 .svc-tool img{width:44px;height:44px;opacity:1;filter:none;object-fit:contain;display:block}
+.svc-tool-logo-image{display:block;width:44px;height:44px;object-fit:contain;object-position:center center}
+.svc-tool-logo-image--crop-bottom{clip-path:inset(0 0 11% 0);transform:translateY(-2px)}
 .svc-tool:after{
   content:attr(data-tooltip);
   position:absolute;left:50%;bottom:10px;
@@ -255,7 +257,9 @@
   .svc-service-focus p{font-size:10px}
   .svc-tool{min-height:100px}
   .svc-tool>span{width:60px;height:60px}
-  .svc-tool img{width:39px;height:39px}
+   .svc-tool img{width:39px;height:39px}
+  .svc-tool-logo-image{width:39px;height:39px}
+  .svc-tool-logo-image--crop-bottom{clip-path:inset(0 0 11% 0);transform:translateY(-2px)}
   .svc-tool:after{bottom:8px;font-size:8px}
 }
 
