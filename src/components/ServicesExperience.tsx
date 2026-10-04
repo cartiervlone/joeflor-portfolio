@@ -62,7 +62,7 @@ function Folder({progress}:{progress:number}) {
   const reveal=smooth((progress-.04)/.22)
   const lift=smooth((progress-.14)/.26)
   const open=smooth((progress-.34)/.18)
-  const pageProgress=clamp((progress-.53)/.38)
+  const pageProgress=clamp((progress-.53)/.47)
   const pagePosition=pageProgress*7
   const pageStyle=(index:number)=>{
     const position=pagePosition-index
