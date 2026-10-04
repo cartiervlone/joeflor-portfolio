@@ -388,3 +388,37 @@
   background:rgba(255,255,255,.045);
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.07),7px 8px 16px rgba(4,8,15,.22);
 }
+
+
+/* --- Full-page crystal atmosphere + viewport-safe folder --- */
+.svc-experience{
+  background:
+    radial-gradient(ellipse at 50% 18%,rgba(167,205,242,.22) 0%,rgba(167,205,242,.08) 24%,transparent 52%),
+    radial-gradient(ellipse at 12% 70%,rgba(121,165,218,.12) 0%,transparent 38%),
+    radial-gradient(ellipse at 88% 28%,rgba(170,146,255,.13) 0%,transparent 36%),
+    linear-gradient(135deg,#e4eaf3 0%,#dfe7f2 48%,#e9ecf5 100%);
+  background-attachment:fixed;
+}
+.svc-folder-sticky{
+  background:transparent;
+  overflow:clip;
+}
+.svc-folder-wrap{
+  width:min(720px,68vw,calc(82vh * .82));
+  height:auto;
+  aspect-ratio:.82;
+}
+[data-theme='dark'] .svc-experience{
+  background:
+    radial-gradient(ellipse at 50% 18%,rgba(78,124,169,.18) 0%,rgba(78,124,169,.06) 25%,transparent 54%),
+    radial-gradient(ellipse at 14% 72%,rgba(76,121,169,.12) 0%,transparent 38%),
+    radial-gradient(ellipse at 86% 28%,rgba(143,124,246,.1) 0%,transparent 38%),
+    linear-gradient(135deg,#1b2433 0%,#202b3b 52%,#202634 100%);
+}
+[data-theme='dark'] .svc-folder-sticky{background:transparent}
+
+@media(max-width:639px){
+  .svc-folder-wrap{
+    width:min(520px,93vw,calc(78vh * .82));
+  }
+}
