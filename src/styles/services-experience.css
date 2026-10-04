@@ -404,9 +404,12 @@
   overflow:clip;
 }
 .svc-folder-wrap{
-  width:min(720px,68vw,calc(90vh * .82));
+  width:min(720px,68vw);
   height:auto;
   aspect-ratio:.82;
+  transform-style:preserve-3d;
+  perspective:1600px;
+  will-change:transform,opacity
 }
 [data-theme='dark'] .svc-experience{
   background:
@@ -418,7 +421,5 @@
 [data-theme='dark'] .svc-folder-sticky{background:transparent}
 
 @media(max-width:639px){
-  .svc-folder-wrap{
-    width:min(520px,93vw,calc(88vh * .82));
-  }
+  .svc-folder-wrap{width:min(520px,91vw)}
 }
