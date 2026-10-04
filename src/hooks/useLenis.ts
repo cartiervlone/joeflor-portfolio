@@ -97,6 +97,16 @@ export function useLenis() {
       gsap.ticker.add(tick)
       gsap.ticker.lagSmoothing(0)
 
+      // Route views replace their contents inside the stable shell wrapper.
+      // Re-measure Lenis + ScrollTrigger after each route so the Home page's
+      // long sections can never inherit the previous route's scroll height.
+      const onRouteChange = () => {
+        lenis.resize()
+        ScrollTrigger.refresh()
+        lenis.scrollTo(0, { immediate: true })
+      }
+      window.addEventListener('portfolio:route-change', onRouteChange)
+
       // Intercept in-page anchor clicks (#about, #works, #contact, etc.)
       // and smooth-scroll via Lenis instead of letting the browser hard-jump.
       const NAV_OFFSET = -88 // height of the floating nav pill + breathing room
@@ -125,6 +135,7 @@ export function useLenis() {
       document.addEventListener('click', onAnchorClick)
 
       cleanup = () => {
+        window.removeEventListener('portfolio:route-change', onRouteChange)
         document.removeEventListener('click', onAnchorClick)
         gsap.ticker.remove(tick)
         lenis.destroy()
