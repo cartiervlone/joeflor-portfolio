@@ -62,13 +62,12 @@ function ToolLogo({src,name}:{src:string;name:string}) {
 }
 
 function Folder({progress}:{progress:number}) {
-  const reveal=smooth((progress-.04)/.22)
-  const lift=smooth((progress-.14)/.26)
-  const open=smooth((progress-.34)/.18)
-  // Finish revealing the folder pages slightly before the scene ends.
-  // The extra scroll room lets the fully opened folder breathe at the bottom
-  // instead of handing off immediately to the next section.
-  const pageProgress=clamp((progress-.50)/.40)
+  // Give each phase more scroll room so the folder feels physical instead of rushed.
+  const reveal=smooth((progress-.06)/.20)
+  const lift=smooth((progress-.18)/.22)
+  const open=smooth((progress-.40)/.20)
+  // The pages now occupy the long middle stretch of the scene, one at a time.
+  const pageProgress=clamp((progress-.62)/.32)
   const pagePosition=pageProgress*7
   const pageStyle=(index:number)=>{
     const position=pagePosition-index
@@ -137,7 +136,7 @@ function Folder({progress}:{progress:number}) {
         <article className="svc-page svc-page--work" style={pageStyle(5)}>
           <div className="svc-page-topline"><span>WHAT I ACTUALLY DO</span><i>WORK</i></div>
           <h2>From raw footage to a finished cut.</h2>
-          <div className="svc-demo-grid"><div className="svc-demo"><small>MULTICAM / SPLIT-CAM</small><div className="svc-cams"><i>HOST</i><i>GUEST</i><i>HOST + GUEST</i></div></div><div className="svc-demo"><small>AUDIO</small><div className="svc-wave">{Array.from({length:10},(_,i)=><i key={i}/>)}</div><label>RAW → RX CLEANUP → FINAL</label></div></div>
+          <div className="svc-demo-grid"><div className="svc-demo"><small>MULTICAM / SPLIT-CAM</small><div className="svc-cams" aria-label="Host, guest, and split-cam views"><div className="svc-camera"><span className="svc-camera-body"><b>HOST</b><i/></span><small>CAM 01</small></div><div className="svc-camera"><span className="svc-camera-body"><b>GUEST</b><i/></span><small>CAM 02</small></div><div className="svc-camera svc-camera--wide"><span className="svc-camera-body"><b>HOST + GUEST</b><i/><em/></span><small>SPLIT-CAM</small></div></div></div><div className="svc-demo"><small>AUDIO</small><div className="svc-wave">{Array.from({length:10},(_,i)=><i key={i}/>)}</div><label>RAW → RX CLEANUP → FINAL</label></div></div>
           <p className="svc-tags">Cutting · Pacing · B-roll · Transitions · Captions · Music · SFX · Color · Dialogue cleanup</p>
         </article>
 
