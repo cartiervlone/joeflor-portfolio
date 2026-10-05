@@ -42,6 +42,7 @@ export default function IntroOverlay() {
     if (!title) {
       release()
       releaseHead()
+      if (homeTitle) window.setTimeout(() => homeTitle.classList.remove('home__title--intro-settled'), 900)
       setGone(true)
       return
     }
@@ -98,7 +99,7 @@ export default function IntroOverlay() {
       await wait(ENTER_MS)
       if (cancelled) return
 
-      title.classList.add('boot__title--sweep')
+      title.classList.add('boot__title--sweep', 'boot__title--settled')
 
       await wait(SETTLE_MS)
       if (cancelled) return
@@ -117,6 +118,9 @@ export default function IntroOverlay() {
 
       if (cancelled) return
       release()
+
+      const homeTitle = document.querySelector<HTMLElement>('.home__title')
+      if (homeTitle) homeTitle.classList.add('home__title--intro-settled')
 
       await wait(40)
       if (cancelled) return
