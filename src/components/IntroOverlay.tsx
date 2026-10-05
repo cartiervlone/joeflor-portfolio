@@ -42,7 +42,6 @@ export default function IntroOverlay() {
     if (!title) {
       release()
       releaseHead()
-      if (homeTitle) window.setTimeout(() => homeTitle.classList.remove('home__title--intro-settled'), 900)
       setGone(true)
       return
     }
