@@ -7,6 +7,23 @@
   inset: 0;
   z-index: 9000;
   pointer-events: none;
+  overflow: hidden;
+}
+
+.boot::before {
+  content: '';
+  position: absolute;
+  inset: -6%;
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(255,255,255,.22), transparent 46%),
+    radial-gradient(ellipse at 50% 50%, rgba(143,124,246,.06), transparent 62%);
+  opacity: 0;
+  transform: scale(.96);
+  will-change: transform, opacity;
+}
+
+html.is-intro-breathe .boot::before {
+  animation: hero-atmosphere 1900ms cubic-bezier(.16,1,.3,1) forwards;
 }
 
 .boot__title {
@@ -16,80 +33,76 @@
   transform-origin: 0 0;
   opacity: 0;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: flex-start;
-  column-gap: 0.26em;
-  row-gap: 0;
   font-family: var(--font-display);
   font-size: clamp(30px, 3.5vw, 72px);
   font-weight: 700;
   letter-spacing: var(--ls-display);
-  line-height: 1.06;
+  line-height: 1.02;
   color: var(--navy);
   will-change: transform, opacity, filter;
   text-shadow:
-    -1px -1px 1px rgba(255,255,255,.88),
+    -1px -1px 1px rgba(255,255,255,.92),
     2px 3px 5px rgba(132,145,171,.34);
 }
 
-/* A soft physical lift: the text reads like a raised object on the page. */
 .boot__title::before {
   content: '';
   position: absolute;
-  inset: -0.16em -0.24em;
-  border-radius: 0.28em;
-  background: rgba(233,236,245,.28);
+  inset: -0.15em -0.22em;
+  border-radius: .3em;
+  background: rgba(233,236,245,.24);
   box-shadow:
-    8px 8px 18px rgba(177,186,207,.24),
-    -8px -8px 18px rgba(255,255,255,.46);
-  opacity: .72;
-  z-index: -1;
-  pointer-events: none;
+    9px 10px 22px rgba(177,186,207,.30),
+    -9px -10px 22px rgba(255,255,255,.54);
+  z-index: -2;
 }
 
 .boot__title::after {
   content: '';
   position: absolute;
-  top: -18%;
-  bottom: -18%;
-  left: -32%;
-  width: 18%;
-  transform: skewX(-18deg);
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255,255,255,.72),
-    transparent
-  );
+  inset: -10% -8%;
+  border-radius: .28em;
+  background: linear-gradient(108deg, transparent 38%, rgba(255,255,255,.58) 49%, transparent 60%);
+  transform: translateX(-120%);
   opacity: 0;
   pointer-events: none;
+  mix-blend-mode: screen;
 }
 
 .boot__title--sweep::after {
-  animation: hero-light-sweep 760ms cubic-bezier(.2,.7,.2,1) forwards;
+  animation: hero-light-sweep 780ms cubic-bezier(.2,.7,.2,1) forwards;
 }
 
-@keyframes hero-light-sweep {
-  0% { left: -32%; opacity: 0; }
-  18% { opacity: .72; }
-  100% { left: 125%; opacity: 0; }
-}
-
-.boot__word {
+.boot__line {
   display: block;
   overflow: hidden;
-  padding: 0.2em 0 0.08em;
-  margin: -0.2em 0 -0.08em;
-  white-space: pre;
+  padding: .14em 0 .06em;
+  margin: -.14em 0 -.06em;
+  white-space: nowrap;
 }
 
-.boot__word-in {
+.boot__line-in {
   display: block;
   opacity: 0;
   will-change: transform, opacity;
 }
 
-/* The page stays hidden only while the hero is entering. */
+/* Fine physical extrusion: a few offset layers, not a cartoon 3D effect. */
+.boot__line-in::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  transform: translate(0, 0);
+  color: transparent;
+  text-shadow:
+    1px 1px 0 rgba(171,181,201,.30),
+    2px 2px 0 rgba(171,181,201,.20),
+    3px 3px 5px rgba(150,161,184,.14);
+  z-index: -1;
+}
+
 html.is-intro-head .home__title { opacity: 0; }
 
 html.is-intro .home__cta,
@@ -148,14 +161,29 @@ html.is-intro .rail__inner > * {
 .rail__inner > *:nth-child(6) { transition-delay: 300ms; }
 .rail__inner > *:nth-child(7) { transition-delay: 350ms; }
 
+.home__title {
+  transform: translate3d(var(--hero-mx, 0px), var(--hero-my, 0px), 0);
+  transition: transform 220ms cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes hero-atmosphere {
+  0% { opacity: 0; transform: scale(.96); }
+  28% { opacity: .82; }
+  100% { opacity: .26; transform: scale(1.02); }
+}
+
+@keyframes hero-light-sweep {
+  0% { transform: translateX(-120%); opacity: 0; }
+  16% { opacity: .56; }
+  100% { transform: translateX(120%); opacity: 0; }
+}
+
 @media (min-width: 1100px) {
   .boot__title { white-space: nowrap; }
 }
 
 @media (max-width: 1099px) {
-  .boot__title {
-    column-gap: 0.22em;
-  }
+  .boot__title { font-size: clamp(29px, 8vw, 54px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
