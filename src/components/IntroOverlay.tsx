@@ -170,7 +170,7 @@ export default function IntroOverlay() {
       <div className="boot__title" ref={titleRef}>
         {LINES.map((line, index) => (
           <span className="boot__line" key={line}>
-            <span className="boot__line-in">{line}</span>
+            <span className="boot__line-in" data-text={line}>{line}</span>
           </span>
         ))}
       </div>
