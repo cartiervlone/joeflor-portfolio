@@ -11,9 +11,9 @@ import { profile } from '@/data/profile'
  */
 
 const WORDS = `${profile.displayName.line1} ${profile.displayName.line2}`.split(' ')
-const ENTER_MS = 1150
-const SETTLE_MS = 850
-const EASE_CAMERA = 'cubic-bezier(0.76, 0, 0.24, 1)'
+const ENTER_MS = 1350
+const SETTLE_MS = 520
+const EASE_CAMERA = 'cubic-bezier(0.22, 0.78, 0.24, 1)'
 
 const shouldRun =
   typeof window !== 'undefined' &&
@@ -67,8 +67,10 @@ export default function IntroOverlay() {
       const sx = (window.innerWidth - w) / 2
       const sy = (window.innerHeight - h) / 2 - Math.min(24, window.innerHeight * 0.03)
 
-      const start = `translate3d(${sx}px, ${sy + 28 * scale}px, 0) scale(${scale})`
-      const settle = `translate3d(${sx}px, ${sy}px, 0) scale(${scale})`
+      // A visible but restrained camera move: the title starts slightly
+      // pulled back and tilted, then pushes forward into a flat, settled frame.
+      const start = `perspective(1100px) translate3d(${sx}px, ${sy + 54 * scale}px, -120px) rotateX(8deg) rotateY(-3deg) scale(${scale * 0.78})`
+      const settle = `perspective(1100px) translate3d(${sx}px, ${sy}px, 0) rotateX(0deg) rotateY(0deg) scale(${scale})`
 
       title.style.width = `${width}px`
       title.style.transform = start
@@ -107,6 +109,7 @@ export default function IntroOverlay() {
         const handoff = title.animate(
           [
             { transform: settle, opacity: 1 },
+            { transform: `perspective(1100px) translate3d(${rect.left - sx}px, ${rect.top - sy - 3}px, 18px) rotateX(-1deg) scale(1.035)`, opacity: 1, offset: .55 },
             { transform: `translate3d(${rect.left}px, ${rect.top}px, 0) scale(1)`, opacity: 1 },
           ],
           { duration: 720, fill: 'both', easing: EASE_CAMERA },
