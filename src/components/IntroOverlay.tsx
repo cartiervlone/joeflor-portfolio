@@ -4,13 +4,15 @@ import { profile } from '@/data/profile'
 /**
  * IntroOverlay — a restrained neumorphic hero entrance.
  *
- * The headline rises like a physical object, settles with a tiny overshoot,
- * catches one ambient edge highlight, then hands off to the real hero.
+ * The headline rises out of the page with soft physical depth, catches one
+ * quiet light sweep, then settles into the real home headline. The animation
+ * is intentionally short and controlled: no workflow diagram, no full-screen
+ * overlay, no bouncing.
  */
 
-const LINES = [profile.displayName.line1, profile.displayName.line2]
-const ENTER_MS = 1050
-const SETTLE_MS = 650
+const WORDS = `${profile.displayName.line1} ${profile.displayName.line2}`.split(' ')
+const ENTER_MS = 1150
+const SETTLE_MS = 850
 const EASE_CAMERA = 'cubic-bezier(0.76, 0, 0.24, 1)'
 
 const shouldRun =
@@ -20,10 +22,7 @@ const shouldRun =
 
 if (shouldRun) document.documentElement.classList.add('is-intro', 'is-intro-head')
 
-const release = () => {
-  document.documentElement.classList.remove('is-intro', 'is-intro-head', 'is-intro-breathe')
-}
-
+const release = () => document.documentElement.classList.remove('is-intro')
 const releaseHead = () => document.documentElement.classList.remove('is-intro-head')
 
 export default function IntroOverlay() {
@@ -37,7 +36,7 @@ export default function IntroOverlay() {
       return
     }
 
-    document.documentElement.classList.add('is-intro', 'is-intro-head', 'is-intro-breathe')
+    document.documentElement.classList.add('is-intro', 'is-intro-head')
 
     const title = titleRef.current
     if (!title) {
@@ -68,41 +67,33 @@ export default function IntroOverlay() {
       const sx = (window.innerWidth - w) / 2
       const sy = (window.innerHeight - h) / 2 - Math.min(24, window.innerHeight * 0.03)
 
-      const start = `translate3d(${sx}px, ${sy + 34 * scale}px, 0) scale(${scale})`
+      const start = `translate3d(${sx}px, ${sy + 28 * scale}px, 0) scale(${scale})`
       const settle = `translate3d(${sx}px, ${sy}px, 0) scale(${scale})`
-      const overshoot = `translate3d(${sx}px, ${sy - 4 * scale}px, 0) scale(${scale * 1.008})`
 
       title.style.width = `${width}px`
       title.style.transform = start
       title.style.opacity = '1'
 
-      const lines = Array.from(title.querySelectorAll<HTMLElement>('.boot__line-in'))
-      lines.forEach((line, index) => {
-        const animation = line.animate(
+      const words = Array.from(title.querySelectorAll<HTMLElement>('.boot__word-in'))
+      words.forEach((word, index) => {
+        const delay = 100 + index * 95
+        const animation = word.animate(
           [
-            { opacity: 0, transform: 'translate3d(0, 24px, 0) scale(.985)' },
+            { opacity: 0, transform: 'translate3d(0, 22px, 0) scale(.985)' },
             { opacity: 1, transform: 'translate3d(0, 0, 0) scale(1)' },
           ],
-          {
-            duration: 700,
-            delay: index * 155,
-            fill: 'both',
-            easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
-          },
+          { duration: 620, delay, fill: 'both', easing: 'cubic-bezier(0.16, 1, 0.3, 1)' },
         )
         anims.push(animation)
       })
 
-      const lift = title.animate(
+      title.animate(
         [
-          { transform: start, filter: 'blur(9px)', opacity: 0 },
-          { transform: settle, filter: 'blur(0)', opacity: 1, offset: .86 },
-          { transform: overshoot, filter: 'blur(0)', opacity: 1, offset: .94 },
+          { transform: start, filter: 'blur(8px)', opacity: 0 },
           { transform: settle, filter: 'blur(0)', opacity: 1 },
         ],
         { duration: ENTER_MS, fill: 'both', easing: 'cubic-bezier(0.16, 1, 0.3, 1)' },
       )
-      anims.push(lift)
 
       await wait(ENTER_MS)
       if (cancelled) return
@@ -118,7 +109,7 @@ export default function IntroOverlay() {
             { transform: settle, opacity: 1 },
             { transform: `translate3d(${rect.left}px, ${rect.top}px, 0) scale(1)`, opacity: 1 },
           ],
-          { duration: 680, fill: 'both', easing: EASE_CAMERA },
+          { duration: 720, fill: 'both', easing: EASE_CAMERA },
         )
         anims.push(handoff)
         await handoff.finished
@@ -126,30 +117,11 @@ export default function IntroOverlay() {
 
       if (cancelled) return
       release()
+
       await wait(40)
       if (cancelled) return
       releaseHead()
       setGone(true)
-
-      // A nearly imperceptible 1–2px physical response remains on the real title.
-      const liveTitle = document.querySelector<HTMLElement>('.home__title')
-      if (liveTitle && window.matchMedia('(pointer: fine)').matches) {
-        const onMove = (event: PointerEvent) => {
-          const bounds = liveTitle.getBoundingClientRect()
-          const x = (event.clientX - (bounds.left + bounds.width / 2)) / bounds.width
-          const y = (event.clientY - (bounds.top + bounds.height / 2)) / bounds.height
-          liveTitle.style.setProperty('--hero-mx', `${Math.max(-1, Math.min(1, x)) * 2}px`)
-          liveTitle.style.setProperty('--hero-my', `${Math.max(-1, Math.min(1, y)) * 2}px`)
-        }
-        const reset = () => {
-          liveTitle.style.setProperty('--hero-mx', '0px')
-          liveTitle.style.setProperty('--hero-my', '0px')
-        }
-        liveTitle.addEventListener('pointermove', onMove)
-        liveTitle.addEventListener('pointerleave', reset)
-        liveTitle.style.setProperty('--hero-mx', '0px')
-        liveTitle.style.setProperty('--hero-my', '0px')
-      }
     }
 
     void run()
@@ -168,9 +140,9 @@ export default function IntroOverlay() {
   return (
     <div className="boot" aria-hidden="true" role="presentation">
       <div className="boot__title" ref={titleRef}>
-        {LINES.map((line, index) => (
-          <span className="boot__line" key={line}>
-            <span className="boot__line-in" data-text={line}>{line}</span>
+        {WORDS.map((word, index) => (
+          <span className="boot__word" key={`${word}-${index}`}>
+            <span className="boot__word-in">{word}</span>
           </span>
         ))}
       </div>
