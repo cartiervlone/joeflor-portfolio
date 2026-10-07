@@ -127,6 +127,40 @@ export default function IntroOverlay() {
       await wait(40)
       if (cancelled) return
       releaseHead()
+
+      // After the intro, give the hero a tiny physical response to the pointer.
+      // It stays deliberately subtle so the headline still feels like a stable
+      // typographic object rather than a floating 3D effect.
+      const homeTitle = document.querySelector<HTMLElement>('.home__title')
+      const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches
+
+      if (homeTitle && finePointer) {
+        const handlePointerMove = (event: PointerEvent) => {
+          const x = (event.clientX / window.innerWidth - 0.5) * 2
+          const y = (event.clientY / window.innerHeight - 0.5) * 2
+          homeTitle.style.transform = `perspective(900px) rotateY(${x * 1.15}deg) rotateX(${y * -0.8}deg) translate3d(${x * 1.5}px, ${y * 1.2}px, 0)`
+        }
+
+        const resetPointer = () => {
+          homeTitle.style.transform = ''
+        }
+
+        homeTitle.classList.add('home__title--cursor-reactive')
+        window.addEventListener('pointermove', handlePointerMove, { passive: true })
+        window.addEventListener('pointerleave', resetPointer)
+        window.addEventListener('blur', resetPointer)
+
+        const cleanupPointer = () => {
+          window.removeEventListener('pointermove', handlePointerMove)
+          window.removeEventListener('pointerleave', resetPointer)
+          window.removeEventListener('blur', resetPointer)
+          homeTitle.classList.remove('home__title--cursor-reactive')
+          homeTitle.style.transform = ''
+        }
+
+        ;(run as { pointerCleanup?: () => void }).pointerCleanup = cleanupPointer
+      }
+
       setGone(true)
     }
 
