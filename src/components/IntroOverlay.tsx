@@ -11,8 +11,8 @@ import { profile } from '@/data/profile'
  */
 
 const WORDS = `${profile.displayName.line1} ${profile.displayName.line2}`.split(' ')
-const ENTER_MS = 1350
-const SETTLE_MS = 520
+const ENTER_MS = 1900
+const SETTLE_MS = 820
 const EASE_CAMERA = 'cubic-bezier(0.22, 0.78, 0.24, 1)'
 
 const shouldRun =
@@ -78,13 +78,13 @@ export default function IntroOverlay() {
 
       const words = Array.from(title.querySelectorAll<HTMLElement>('.boot__word-in'))
       words.forEach((word, index) => {
-        const delay = 100 + index * 95
+        const delay = 140 + index * 125
         const animation = word.animate(
           [
             { opacity: 0, transform: 'translate3d(0, 22px, 0) scale(.985)' },
             { opacity: 1, transform: 'translate3d(0, 0, 0) scale(1)' },
           ],
-          { duration: 620, delay, fill: 'both', easing: 'cubic-bezier(0.16, 1, 0.3, 1)' },
+          { duration: 900, delay, fill: 'both', easing: 'cubic-bezier(0.16, 1, 0.3, 1)' },
         )
         anims.push(animation)
       })
@@ -112,7 +112,7 @@ export default function IntroOverlay() {
             { transform: `perspective(1100px) translate3d(${rect.left - sx}px, ${rect.top - sy - 3}px, 18px) rotateX(-1deg) scale(1.035)`, opacity: 1, offset: .55 },
             { transform: `translate3d(${rect.left}px, ${rect.top}px, 0) scale(1)`, opacity: 1 },
           ],
-          { duration: 720, fill: 'both', easing: EASE_CAMERA },
+          { duration: 1050, fill: 'both', easing: EASE_CAMERA },
         )
         anims.push(handoff)
         await handoff.finished
