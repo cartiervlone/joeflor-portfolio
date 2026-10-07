@@ -11,8 +11,10 @@ import { profile } from '@/data/profile'
  */
 
 const WORDS = `${profile.displayName.line1} ${profile.displayName.line2}`.split(' ')
-const ENTER_MS = 1900
-const SETTLE_MS = 820
+// The landing intro is intentionally slower now: the motion should feel
+// cinematic and deliberate instead of like a UI splash screen.
+const ENTER_MS = 3200
+const SETTLE_MS = 1200
 const EASE_CAMERA = 'cubic-bezier(0.22, 0.78, 0.24, 1)'
 
 const shouldRun =
@@ -79,13 +81,13 @@ export default function IntroOverlay() {
 
       const words = Array.from(title.querySelectorAll<HTMLElement>('.boot__word-in'))
       words.forEach((word, index) => {
-        const delay = 140 + index * 125
+        const delay = 260 + index * 190
         const animation = word.animate(
           [
             { opacity: 0, transform: 'translate3d(0, 22px, 0) scale(.985)' },
             { opacity: 1, transform: 'translate3d(0, 0, 0) scale(1)' },
           ],
-          { duration: 900, delay, fill: 'both', easing: 'cubic-bezier(0.16, 1, 0.3, 1)' },
+          { duration: 1200, delay, fill: 'both', easing: 'cubic-bezier(0.16, 1, 0.3, 1)' },
         )
         anims.push(animation)
       })
@@ -113,7 +115,7 @@ export default function IntroOverlay() {
             { transform: `perspective(1100px) translate3d(${rect.left - sx}px, ${rect.top - sy - 3}px, 18px) rotateX(-1deg) scale(1.035)`, opacity: 1, offset: .55 },
             { transform: `translate3d(${rect.left}px, ${rect.top}px, 0) scale(1)`, opacity: 1 },
           ],
-          { duration: 1050, fill: 'both', easing: EASE_CAMERA },
+          { duration: 1600, fill: 'both', easing: EASE_CAMERA },
         )
         anims.push(handoff)
         await handoff.finished
@@ -132,7 +134,6 @@ export default function IntroOverlay() {
       // After the intro, give the hero a tiny physical response to the pointer.
       // It stays deliberately subtle so the headline still feels like a stable
       // typographic object rather than a floating 3D effect.
-      const homeTitle = document.querySelector<HTMLElement>('.home__title')
       const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches
 
       if (homeTitle && finePointer) {
