@@ -123,11 +123,11 @@ html.is-intro .tabbar { transform: translateY(24px); }
     transform 1650ms var(--ease-out);
 }
 
-.home__lede { transition-delay: 120ms; }
-.home__glass { transition-delay: 240ms; }
+.home__lede { transition-delay: 240ms; }
+.home__glass { transition-delay: 320ms; }
 .hstats { transition-delay: 180ms; }
-.hsec, .htiles, .hproof { transition-delay: 360ms; }
-.tabbar { transition-delay: 420ms; }
+.hsec, .htiles, .hproof { transition-delay: 460ms; }
+.tabbar { transition-delay: 560ms; }
 
 html.is-intro .rail__inner > * {
   opacity: 0;
