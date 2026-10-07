@@ -15,7 +15,7 @@ const WORDS = `${profile.displayName.line1} ${profile.displayName.line2}`.split(
 // cinematic and deliberate instead of like a UI splash screen.
 const ENTER_MS = 4200
 const SETTLE_MS = 1500
-const EASE_CAMERA = 'cubic-bezier(0.22, 0.78, 0.24, 1)'
+const EASE_CAMERA = 'cubic-bezier(0.65, 0, 0.35, 1)'
 
 const shouldRun =
   typeof window !== 'undefined' &&
@@ -64,7 +64,7 @@ export default function IntroOverlay() {
 
       const width = rect?.width ?? Math.min(760, window.innerWidth * 0.86)
       const height = rect?.height ?? title.offsetHeight
-      const scale = Math.min((window.innerWidth * 0.82) / width, 2.4)
+      const scale = Math.min((window.innerWidth * 0.76) / width, (window.innerHeight * 0.34) / height, 1.65)
       const w = width * scale
       const h = height * scale
       const sx = (window.innerWidth - w) / 2
@@ -87,7 +87,7 @@ export default function IntroOverlay() {
             { opacity: 0, transform: 'translate3d(0, 8px, 0) scale(.995)' },
             { opacity: 1, transform: 'translate3d(0, 0, 0) scale(1)' },
           ],
-          { duration: 1800, delay, fill: 'both', easing: 'cubic-bezier(0.16, 1, 0.3, 1)' },
+          { duration: 1800, delay, fill: 'both', easing: 'cubic-bezier(0.65, 0, 0.35, 1)' },
         )
         anims.push(animation)
       })
@@ -112,7 +112,7 @@ export default function IntroOverlay() {
         const handoff = title.animate(
           [
             { transform: settle, opacity: 1 },
-            { transform: `perspective(1100px) translate3d(${rect.left - sx}px, ${rect.top - sy - 3}px, 18px) rotateX(-1deg) scale(1.035)`, opacity: 1, offset: .55 },
+            { transform: `translate3d(${rect.left + 6}px, ${rect.top + 4}px, 8px) scale(1.01)`, opacity: 1, offset: .5 },
             { transform: `translate3d(${rect.left}px, ${rect.top}px, 0) scale(1)`, opacity: 1 },
           ],
           { duration: 2200, fill: 'both', easing: EASE_CAMERA },
