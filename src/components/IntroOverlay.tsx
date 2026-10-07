@@ -13,8 +13,8 @@ import { profile } from '@/data/profile'
 const WORDS = `${profile.displayName.line1} ${profile.displayName.line2}`.split(' ')
 // The landing intro is intentionally slower now: the motion should feel
 // cinematic and deliberate instead of like a UI splash screen.
-const ENTER_MS = 3200
-const SETTLE_MS = 1200
+const ENTER_MS = 4200
+const SETTLE_MS = 1500
 const EASE_CAMERA = 'cubic-bezier(0.22, 0.78, 0.24, 1)'
 
 const shouldRun =
@@ -72,7 +72,7 @@ export default function IntroOverlay() {
 
       // A visible but restrained camera move: the title starts slightly
       // pulled back and tilted, then pushes forward into a flat, settled frame.
-      const start = `perspective(1100px) translate3d(${sx}px, ${sy + 54 * scale}px, -120px) rotateX(8deg) rotateY(-3deg) scale(${scale * 0.78})`
+      const start = `perspective(1100px) translate3d(${sx}px, ${sy + 24 * scale}px, -120px) rotateX(8deg) rotateY(-3deg) scale(${scale * 0.9})`
       const settle = `perspective(1100px) translate3d(${sx}px, ${sy}px, 0) rotateX(0deg) rotateY(0deg) scale(${scale})`
 
       title.style.width = `${width}px`
@@ -81,13 +81,13 @@ export default function IntroOverlay() {
 
       const words = Array.from(title.querySelectorAll<HTMLElement>('.boot__word-in'))
       words.forEach((word, index) => {
-        const delay = 260 + index * 190
+        const delay = 420 + index * 240
         const animation = word.animate(
           [
-            { opacity: 0, transform: 'translate3d(0, 22px, 0) scale(.985)' },
+            { opacity: 0, transform: 'translate3d(0, 8px, 0) scale(.995)' },
             { opacity: 1, transform: 'translate3d(0, 0, 0) scale(1)' },
           ],
-          { duration: 1200, delay, fill: 'both', easing: 'cubic-bezier(0.16, 1, 0.3, 1)' },
+          { duration: 1800, delay, fill: 'both', easing: 'cubic-bezier(0.16, 1, 0.3, 1)' },
         )
         anims.push(animation)
       })
@@ -115,7 +115,7 @@ export default function IntroOverlay() {
             { transform: `perspective(1100px) translate3d(${rect.left - sx}px, ${rect.top - sy - 3}px, 18px) rotateX(-1deg) scale(1.035)`, opacity: 1, offset: .55 },
             { transform: `translate3d(${rect.left}px, ${rect.top}px, 0) scale(1)`, opacity: 1 },
           ],
-          { duration: 1600, fill: 'both', easing: EASE_CAMERA },
+          { duration: 2200, fill: 'both', easing: EASE_CAMERA },
         )
         anims.push(handoff)
         await handoff.finished
