@@ -49,6 +49,7 @@ export default function IntroOverlay() {
     let cancelled = false
     const timers: number[] = []
     const anims: Animation[] = []
+    let pointerCleanup: (() => void) | null = null
     const wait = (ms: number) =>
       new Promise<void>((resolve) => timers.push(window.setTimeout(resolve, ms)))
 
@@ -150,15 +151,13 @@ export default function IntroOverlay() {
         window.addEventListener('pointerleave', resetPointer)
         window.addEventListener('blur', resetPointer)
 
-        const cleanupPointer = () => {
+        pointerCleanup = () => {
           window.removeEventListener('pointermove', handlePointerMove)
           window.removeEventListener('pointerleave', resetPointer)
           window.removeEventListener('blur', resetPointer)
           homeTitle.classList.remove('home__title--cursor-reactive')
           homeTitle.style.transform = ''
         }
-
-        ;(run as { pointerCleanup?: () => void }).pointerCleanup = cleanupPointer
       }
 
       setGone(true)
@@ -170,6 +169,7 @@ export default function IntroOverlay() {
       cancelled = true
       timers.forEach(clearTimeout)
       anims.forEach((animation) => animation.cancel())
+      pointerCleanup?.()
       release()
       releaseHead()
     }
