@@ -86,23 +86,46 @@ function EmptyWorkSection({ label, title, description, variant }: {
   )
 }
 
+const TEASERS = [
+  {
+    id: 'SR_EP_41_Teaser',
+    title: 'SR EP 41 Teaser',
+    description: 'Podcast teaser edited for cinematic pacing, music, dialogue, and visual flow.',
+  },
+  {
+    id: 'SR_EP_39_Teaser',
+    title: 'SR EP 39 Teaser',
+    description: 'Podcast teaser edited for cinematic pacing, music, dialogue, and visual flow.',
+  },
+  {
+    id: 'SR_EP_38_Teaser',
+    title: 'SR EP 38 Teaser',
+    description: 'Podcast teaser edited for cinematic pacing, music, dialogue, and visual flow.',
+  },
+]
+
 function TeaserWorkSection() {
   return (
-    <div className="home__glass pgrid__glass pgrid__glass--teaser pgrid__teaser-card">
-      <div className="pgrid__teaser-media">
-        <iframe
-          src="https://player.cloudinary.com/embed/?cloud_name=wsshir2f&public_id=SR_EP_38_Teaser"
-          title="Teaser // 01"
-          allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-          allowFullScreen
-        />
-      </div>
-      <div className="pgrid__teaser-copy">
-        <span className="pgrid__social-empty-label">16:9 · Landscape</span>
-        <h3>Teaser // 01</h3>
-        <p>Podcast teaser edited for cinematic pacing, music, dialogue, and visual flow.</p>
-      </div>
-    </div>
+    <>
+      {TEASERS.map((teaser) => (
+        <article key={teaser.id} className="home__glass pgrid__glass pgrid__glass--teaser pgrid__teaser-card">
+          <div className="pgrid__teaser-media">
+            <iframe
+              src={`https://player.cloudinary.com/embed/?cloud_name=wsshir2f&public_id=${teaser.id}`}
+              title={teaser.title}
+              loading="lazy"
+              allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+          <div className="pgrid__teaser-copy">
+            <span className="pgrid__social-empty-label">16:9 · Landscape</span>
+            <h3>{teaser.title}</h3>
+            <p>{teaser.description}</p>
+          </div>
+        </article>
+      ))}
+    </>
   )
 }
 
