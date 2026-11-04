@@ -25,7 +25,6 @@ const SERVICES_SLIDES = [
 ]
 
 const ABOUT_SLIDES = [
-  'https://res.cloudinary.com/wsshir2f/image/upload/v1791002886/abt3.jpg',
   'https://res.cloudinary.com/wsshir2f/image/upload/v1791002885/abt2.jpg',
   'https://res.cloudinary.com/wsshir2f/image/upload/v1791002886/abt1.jpg',
 ]
@@ -74,10 +73,11 @@ const CARDS: HomeCard[] = [
 
 function AutoSlideshow({ slides }: { slides: string[] }) {
   const isThree = slides.length === 3
+  const isTwo = slides.length === 2
 
   return (
     <div className="bento__slideshow" aria-hidden="true">
-      <div className={isThree ? 'bento__slideshow-track bento__slideshow-track--three' : 'bento__slideshow-track'}>
+      <div className={`bento__slideshow-track${isThree ? ' bento__slideshow-track--three' : ''}${isTwo ? ' bento__slideshow-track--two' : ''}`}>
         {[...slides, slides[0]].map((src, index) => (
           <div className="bento__slide" key={src + '-' + index}>
             <img src={src} alt="" loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
