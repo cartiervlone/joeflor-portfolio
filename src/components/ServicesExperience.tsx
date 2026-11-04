@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type RefObject } from 'react'
+import { Link } from 'react-router-dom'
 import { ArrowDown, ArrowRight, Briefcase, FilmSlate, GameController, Microphone, Sparkle, Toolbox, YoutubeLogo } from '@/components/slab'
 import { SCROLLER_ID } from '@/hooks/useLenis'
 
@@ -213,7 +214,7 @@ export default function ServicesExperience(){
       <small>THE NEXT CUT</small>
       <h2>Have a project in mind?</h2>
       <p>Tell me what you're making and what you want the edit to feel like.</p>
-      <a href="/contact">Let's Work <ArrowRight size={16}/></a>
+      <Link to="/contact">Let's Work <ArrowRight size={16}/></Link>
     </section>
   </div>
 }
