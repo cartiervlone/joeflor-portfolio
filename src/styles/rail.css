@@ -77,6 +77,8 @@
   .rail__name {
     display: flex;
     align-items: center;
+    justify-content: center;
+    text-align: center;
     gap: 7px;
     margin-top: 20px;
     font-size: 22px;
