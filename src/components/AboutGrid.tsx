@@ -11,12 +11,20 @@ const CAPABILITIES: Array<[string, string]> = [
 
 const ABOUT_PHOTOS = [
   {
-    src: 'https://res.cloudinary.com/wsshir2f/image/upload/v1791002885/abt2.jpg',
-    alt: 'Joeflor Hinobiada mirror photo',
+    src: 'https://res.cloudinary.com/wsshir2f/image/upload/f_auto,q_auto/v1793788133/enzo_down.heic',
+    alt: 'Enzo looking down',
   },
   {
-    src: 'https://res.cloudinary.com/wsshir2f/image/upload/v1791002886/abt1.jpg',
-    alt: 'Joeflor Hinobiada in a white shirt',
+    src: 'https://res.cloudinary.com/wsshir2f/image/upload/f_auto,q_auto/v1793788133/enzo_back.heic',
+    alt: 'Enzo photographed from behind',
+  },
+  {
+    src: 'https://res.cloudinary.com/wsshir2f/image/upload/f_auto,q_auto/v1793788133/enzo_mirror.jpg',
+    alt: 'Enzo mirror photo',
+  },
+  {
+    src: 'https://res.cloudinary.com/wsshir2f/image/upload/f_auto,q_auto/v1793787779/Enzo.jpg',
+    alt: 'Enzo portrait',
   },
 ]
 
