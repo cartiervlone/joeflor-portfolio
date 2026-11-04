@@ -11,10 +11,6 @@ const CAPABILITIES: Array<[string, string]> = [
 
 const ABOUT_PHOTOS = [
   {
-    src: 'https://res.cloudinary.com/wsshir2f/image/upload/v1791002886/abt3.jpg',
-    alt: 'Joeflor Hinobiada in a black T-shirt',
-  },
-  {
     src: 'https://res.cloudinary.com/wsshir2f/image/upload/v1791002885/abt2.jpg',
     alt: 'Joeflor Hinobiada mirror photo',
   },
@@ -56,7 +52,7 @@ function AboutSlideshow() {
       <div
         className="agrid__portrait-track"
         style={{
-          transform: `translateX(-${slideIndex * 25}%)`,
+          transform: `translateX(-${slideIndex * (100 / (ABOUT_PHOTOS.length + 1))}%)`,
           transition: transitioning ? 'transform 700ms cubic-bezier(0.22, 1, 0.36, 1)' : 'none',
         }}
       >
