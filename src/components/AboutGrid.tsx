@@ -85,7 +85,7 @@ export default function AboutGrid() {
     <section className="pgrid agrid" aria-labelledby="about-title">
       <header className="pgrid__head">
         <span className="pgrid__eyebrow">About</span>
-        <h1 className="pgrid__title" id="about-title">Hi, I’m {profile.firstName}.</h1>
+        <h1 className="pgrid__title" id="about-title">Hi, I’m hooligan.</h1>
         <p className="pgrid__lede">Video Editor, Post-Production Specialist, Content Creator, and Podcast Video Editor.</p>
       </header>
 
